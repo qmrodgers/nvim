@@ -9,6 +9,56 @@ return {
 			git_branch_recognizable = true,
 		})
 
+		local checkAndDeleteNoteFile = function(noteFilePath)
+			local fs_stat = vim.loop.fs_stat or vim.uv.fs_stat
+			fs_stat(noteFilePath, function(err, _)
+				if err then
+					print("Note not found.")
+				else
+					-- delete note file
+					local success, err = os.remove(noteFilePath)
+					if success then
+						print("Note deleted.")
+					else
+						print("Note delete failed: " .. err)
+					end
+				end
+			end)
+		end
+
+		unpack = unpack or table.unpack
+
+		function Get_Quicknote_Picker(scope)
+			local delete_selected_quicknote = function(prompt_bufnr)
+				local entry = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+				if vim.fn.confirm("Permanently delete this note?", "&yes\n&No", 2) ~= 1 then
+					return
+				end
+
+				-- local match_string = string.gmatch(entry.display, "([^%.]+)") -- Split {NOTE_NAME}.md by "."
+				-- local note = match_string() -- First match of iterator is the note name
+				--
+				-- require("quicknote").DeleteNoteAtGlobal()
+				-- vim.fn.feedkeys(note .. "<CR>")
+				vim.g.last_deleted_note = entry
+				checkAndDeleteNoteFile(entry.value)
+				require("telescope.actions").close(prompt_bufnr)
+				vim.defer_fn(function()
+					Get_Quicknote_Picker(scope)
+				end, 50)
+			end
+
+			local opts = {
+				scope = scope,
+				attach_mappings = function(_, map)
+					map("i", "<c-d>", delete_selected_quicknote)
+					return true
+				end,
+			}
+
+			require("telescope").extensions.quicknote.quicknote(opts)
+		end
+
 		-- NEW NOTE
 		vim.keymap.set("n", "gng", ":lua require('quicknote').NewNoteAtGlobal()<cr>", { desc = "New Note (Global)" })
 		vim.keymap.set(
@@ -34,14 +84,40 @@ return {
 		)
 		vim.keymap.set("n", "gndc", ":lua require('quicknote').DeleteNoteAtCWD()<cr>", { desc = "Delete Note (CWD)" })
 
-		-- SEARCH NOTES
-		vim.keymap.set("n", "tng", ":Telescope quicknote scope=Global<cr>", { desc = "Telescope Notes (Global)" })
+		-- JUMP TO NOTES
 		vim.keymap.set(
 			"n",
-			"tnb",
-			":Telescope quicknote scope=CurrentBuffer<cr>",
-			{ desc = "Telescope Notes (CurrentBuffer)" }
+			"gN",
+			":lua require('quicknote').OpenNoteAtCurrentLine()<cr>",
+			{ desc = "Open Note at Current Line" }
 		)
-		vim.keymap.set("n", "tnc", ":Telescope quicknote scope=CWD<cr>", { desc = "Telescope Notes (CWD)" })
+
+		vim.keymap.set("n", "tnn", ":lua require('quicknote').JumpToNextNote()<cr>", { desc = "Jump to Next Note" })
+
+		vim.keymap.set(
+			"n",
+			"tnp",
+			":lua require('quicknote').JumpToPreviousNote()<cr>",
+			{ desc = "Jump to Previous Note" }
+		)
+
+		-- SEARCH NOTES
+		vim.keymap.set("n", "tng", function()
+			Get_Quicknote_Picker("Global")
+		end, { desc = "Telescope Notes (Global)" })
+
+		vim.keymap.set("n", "tnb", function()
+			Get_Quicknote_Picker("CurrentBuffer")
+		end, { desc = "Telescope Notes (CurrentBuffer)" })
+
+		vim.keymap.set("n", "tnc", function()
+			Get_Quicknote_Picker("CWD")
+		end, { desc = "Telescope Notes (CWD)" })
+
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+			callback = function(ev)
+				require("quicknote").ShowNoteSigns()
+			end,
+		})
 	end,
 }

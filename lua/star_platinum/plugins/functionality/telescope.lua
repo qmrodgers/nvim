@@ -22,6 +22,13 @@ return {
 		table.insert(vimgrep_args, "--glob")
 		table.insert(vimgrep_args, "!**/.git/*")
 
+		local deleteQuicknote = function(prompt_bufnr)
+			local entry = action_state.get_selected_entry()
+			print(entry)
+			-- actions.close(prompt_bufnr)
+			-- print("Deleted: " .. entry.value)
+		end
+
 		telescope.setup({
 			pickers = {
 				buffers = {
@@ -69,6 +76,11 @@ return {
 			extensions = {
 				quicknote = {
 					defaultScope = "Global", -- "CWD", "Global", or "CurrentBuffer"
+					mappings = {
+						i = {
+							["<C-d>"] = print("hello"),
+						},
+					},
 				},
 				live_grep_args = {
 					auto_quoting = true,
@@ -107,7 +119,7 @@ return {
 		keymap.set("n", "tfh", builtin.help_tags, { desc = "Search Help" })
 		keymap.set("n", "tpp", builtin.resume, { desc = "Previous Picker" })
 		keymap.set("n", "tfq", "<cmd>Telescope quickfix<CR>", { desc = "View Quick Fix" })
-		keymap.set("n", "tfh", "<cmd>Telescope quickfixhistory<CR>", { desc = "View Quick Fix History" })
+		keymap.set("n", "tfQ", "<cmd>Telescope quickfixhistory<CR>", { desc = "View Quick Fix History" })
 		keymap.set("n", "tgs", require("telescope").extensions.live_grep_args.live_grep_args, { desc = "Grep Search" })
 		keymap.set("n", "tgw", lga_scs.grep_word_under_cursor, { desc = "Grep Search Current Word" })
 		keymap.set("n", "tfd", builtin.diagnostics, { desc = "Search Diagnostics Across Buffers" })

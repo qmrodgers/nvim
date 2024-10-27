@@ -23,17 +23,17 @@ vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.cursorline = true
 vim.opt.updatetime = 300
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "yes:3"
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.statuscolumn = "%s %l %r %C "
+vim.o.statuscolumn = "%s %l %r %C"
 vim.opt.showmode = false
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
 vim.opt.termguicolors = true
