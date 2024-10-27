@@ -27,9 +27,6 @@ require("lazy").setup({
 	{
 		import = "star_platinum.plugins.ui",
 	},
-	{
-		import = "star_platinum.plugins.text_objects",
-	},
 }, {
 	install = {},
 	checker = {

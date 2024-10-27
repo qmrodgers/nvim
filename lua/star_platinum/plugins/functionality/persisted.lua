@@ -8,8 +8,8 @@ return {
 			autoload = true,
 		})
 		require("telescope").load_extension("persisted")
-		vim.keymap.set("n", "<leader>pl", "<cmd>SessionToggle<CR>", { desc = "Load Persisted Session" })
-		vim.keymap.set("n", "<leader>ps", "<cmd>SessionSave<CR>", { desc = "Save Persisted Session" })
-		vim.keymap.set("n", "<leader>ls", "<cmd>Telescope persisted<CR>", { desc = "Load Persisted with Picker" })
+		vim.keymap.set("n", "gpl", "<cmd>SessionToggle<CR>", { desc = "Load Persisted Session" })
+		vim.keymap.set("n", "gps", "<cmd>SessionSave<CR>", { desc = "Save Persisted Session" })
+		vim.keymap.set("n", "gl", "<cmd>Telescope persisted<CR>", { desc = "Load Persisted with Picker" })
 	end,
 }

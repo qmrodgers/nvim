@@ -26,7 +26,7 @@ vim.opt.updatetime = 300
 vim.o.signcolumn = "yes:3"
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.statuscolumn = "%s %l %r %C"
+vim.o.statuscolumn = "%s%l %r %C"
 vim.opt.showmode = false
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
