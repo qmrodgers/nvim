@@ -60,7 +60,7 @@ vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save 
 
 vim.keymap.set("n", "<leader>wQ", "<cmd>wqa<cr>", { noremap = true, desc = "Save and Quit All Buffers" })
 
-vim.keymap.set("n", "<leader>wb", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
+vim.keymap.set("n", "gB", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
 
 vim.keymap.set("n", "tv", "v%", { nowait = true, desc = "Select all {[()]}" })
 
