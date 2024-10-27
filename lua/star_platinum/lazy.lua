@@ -19,12 +19,6 @@ require("lazy").setup({
 		import = "star_platinum.plugins.lsp",
 	},
 	{
-		import = "star_platinum.plugins.mappings",
-	},
-	{
-		import = "star_platinum.plugins.formatting",
-	},
-	{
 		import = "star_platinum.plugins.git",
 	},
 	{

@@ -1,7 +1,5 @@
 return {
 	"chrisgrieser/nvim-various-textobjs",
-	lazy = true,
-	keys = {
-		-- ...
-}
+	event = "UIEnter",
+	opts = { useDefaultKeymaps = true },
 }

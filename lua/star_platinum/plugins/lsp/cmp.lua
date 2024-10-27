@@ -9,14 +9,14 @@ return {
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind-nvim",
-	    {
-	        "kawre/neotab.nvim",
-	        event = "InsertEnter",
-            opts = {
-                tabkey = ""
-            }
-        },
-        "hrsh7th/cmp-vsnip",
+		{
+			"kawre/neotab.nvim",
+			event = "InsertEnter",
+			opts = {
+				tabkey = "",
+			},
+		},
+		"hrsh7th/cmp-vsnip",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -28,7 +28,7 @@ return {
 		local cmp_path = require("cmp_path")
 		local cmp_nvim_lua = require("cmp_nvim_lua")
 		local cmp_vsnip = require("cmp_vsnip")
-        local neotab = require("neotab")
+		local neotab = require("neotab")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -52,6 +52,7 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.close(),
+				["jk"] = cmp.mapping.close(),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
@@ -71,7 +72,7 @@ return {
 						cmp.select_next_item()
 					elseif luasnip.jumpable(1) then
 						luasnip.expand_or_jump(1)
-                    else
+					else
 						neotab.tabout()
 					end
 				end, {

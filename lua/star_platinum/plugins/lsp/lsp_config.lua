@@ -49,7 +49,7 @@ return {
 			keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 			opts.desc = "Hover Definition"
-			keymap.set("n", "K", vim.lsp.buf.hover, opts)
+			keymap.set("n", "gh", vim.lsp.buf.hover, opts)
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
@@ -82,10 +82,10 @@ return {
 		})
 
 		lspconfig["svelte"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            inlay_hints = inlay_hints,
-        })
+			capabilities = capabilities,
+			on_attach = on_attach,
+			inlay_hints = inlay_hints,
+		})
 
 		lspconfig["emmet_ls"].setup({
 			capabilities = capabilities,
@@ -111,19 +111,19 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			inlay_hints = inlay_hints,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    workspace = {
-                        library = {
-                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true,
-                        },
-                    },
-                },
-            },
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
+					},
+				},
+			},
 		})
 
 		lspconfig["jsonls"].setup({

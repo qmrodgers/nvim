@@ -1,8 +1,6 @@
 -- jj as an alternative to escape insert mode
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 
--- Remap Shift+Movement to operate normally
-
 -- Remap Control+Movement to operate normally in insert mode
 vim.keymap.set({ "n", "i" }, "<C-j>", "<Down>", { noremap = true })
 vim.keymap.set({ "n", "i" }, "<C-k>", "<Up>", { noremap = true })
@@ -16,23 +14,23 @@ vim.keymap.set(
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
 
-vim.keymap.set("n", "<leader>wj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
+vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
 
 vim.keymap.set("n", "<leader>ss", "<C-w>s", { noremap = true, desc = "Split Window Horizontally" })
 
-vim.keymap.set("n", "<leader>sr", "<C-w>s", { noremap = true, desc = "Equalize Window Sizes" })
+vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize Window Sizes" })
 
-vim.keymap.set("n", "<leader>jq", "<cmd>q<cr>", { noremap = true, desc = "Quit Window" })
+vim.keymap.set("n", "gk", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
-vim.keymap.set("n", "<S-j>", "<C-w>j", { noremap = true })
+vim.keymap.set("n", "tj", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
 
-vim.keymap.set("n", "<S-k>", "<C-w>k", { noremap = true })
+vim.keymap.set("n", "tk", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
 
-vim.keymap.set("n", "<S-h>", "<C-w>h", { noremap = true })
+vim.keymap.set("n", "th", "<C-w>h", { noremap = true, desc = "Move to Left Window" })
 
-vim.keymap.set("n", "<S-l>", "<C-w>l", { noremap = true })
+vim.keymap.set("n", "tl", "<C-w>l", { noremap = true, desc = "Move to Right Window" })
 
 vim.keymap.set("n", "<A-j>", "<C-w>J", { noremap = true })
 
@@ -42,9 +40,9 @@ vim.keymap.set("n", "<A-h>", "<C-w>H", { noremap = true })
 
 vim.keymap.set("n", "<A-l>", "<C-w>L", { noremap = true })
 
-vim.keymap.set("n", "<leader>hi", "<C-w>+", { noremap = true, desc = "Increase Window Height" })
+vim.keymap.set("n", "<leader>wI", "<C-w>+", { noremap = true, desc = "Increase Window Height" })
 
-vim.keymap.set("n", "<leader>hd", "<C-w>-", { noremap = true, desc = "Decrease Window Height" })
+vim.keymap.set("n", "<leader>wD", "<C-w>-", { noremap = true, desc = "Decrease Window Height" })
 
 vim.keymap.set("n", "<leader>wi", "<C-w>>", { noremap = true, desc = "Increase Window Width" })
 
@@ -56,9 +54,15 @@ vim.keymap.set("n", "<leader>wa", "<cmd>wa<cr>", { noremap = true, desc = "Save 
 
 vim.keymap.set("n", "<leader>wz", "<cmd>qa<cr>", { noremap = true, desc = "Quit All Buffers" })
 
-vim.keymap.set("n", "<leader><leader>d", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Delete All Buffers" })
+vim.keymap.set("n", "<leader>wZ", "<cmd>qa!<cr>", { noremap = true, desc = "Quit All Buffers" })
 
-vim.keymap.set("n", "<leader>vv", "v%", { nowait = true, desc = "Select all {[()]}" })
+vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save All Buffers" })
+
+vim.keymap.set("n", "<leader>wQ", "<cmd>wqa<cr>", { noremap = true, desc = "Save and Quit All Buffers" })
+
+vim.keymap.set("n", "<leader>wb", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
+
+vim.keymap.set("n", "tv", "v%", { nowait = true, desc = "Select all {[()]}" })
 
 vim.keymap.set("n", "]d", function()
 	vim.diagnostic.goto_next({ popup_opts = { border = "rounded", focusable = false } })
