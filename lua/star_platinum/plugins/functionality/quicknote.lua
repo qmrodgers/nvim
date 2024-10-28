@@ -92,25 +92,30 @@ return {
 			{ desc = "Open Note at Current Line" }
 		)
 
-		vim.keymap.set("n", "tnn", ":lua require('quicknote').JumpToNextNote()<cr>", { desc = "Jump to Next Note" })
+		vim.keymap.set(
+			"n",
+			"<leader>nn",
+			":lua require('quicknote').JumpToNextNote()<cr>",
+			{ desc = "Jump to Next Note" }
+		)
 
 		vim.keymap.set(
 			"n",
-			"tnp",
+			"<leader>np",
 			":lua require('quicknote').JumpToPreviousNote()<cr>",
 			{ desc = "Jump to Previous Note" }
 		)
 
 		-- SEARCH NOTES
-		vim.keymap.set("n", "tng", function()
+		vim.keymap.set("n", "<leader>ng", function()
 			Get_Quicknote_Picker("Global")
 		end, { desc = "Telescope Notes (Global)" })
 
-		vim.keymap.set("n", "tnb", function()
+		vim.keymap.set("n", "<leader>nb", function()
 			Get_Quicknote_Picker("CurrentBuffer")
 		end, { desc = "Telescope Notes (CurrentBuffer)" })
 
-		vim.keymap.set("n", "tnc", function()
+		vim.keymap.set("n", "<leader>nc", function()
 			Get_Quicknote_Picker("CWD")
 		end, { desc = "Telescope Notes (CWD)" })
 

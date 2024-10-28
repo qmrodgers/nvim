@@ -1,5 +1,8 @@
 return {
 	"sindrets/diffview.nvim",
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	},
 	config = function()
 		-- Lua
 		local actions = require("diffview.actions")
@@ -621,5 +624,20 @@ return {
 				},
 			},
 		})
+
+		vim.keymap.set("n", "Gd", function()
+			vim.g.diffview_open = vim.g.diffview_open or false
+
+			if vim.g.diffview_open then
+				vim.cmd("DiffviewClose")
+				vim.g.diffview_open = false
+			else
+				vim.cmd("DiffviewOpen")
+				vim.g.diffview_open = true
+			end
+		end, { desc = "Open Diffview" })
 	end,
+
+	vim.keymap.set("n", "Gh", ":DiffviewFileHistory<CR>", { desc = "Open Diffview File History for Branch" }),
+	vim.keymap.set("n", "GH", ":DiffviewFileHistory<CR>", { desc = "Open Diffview File History for File" }),
 }

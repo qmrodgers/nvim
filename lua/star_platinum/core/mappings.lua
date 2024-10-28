@@ -14,6 +14,10 @@ vim.keymap.set(
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
 
+vim.keymap.set("n", "g0", "gg", { noremap = true, desc = "Go to First Line" })
+
+vim.keymap.set("n", "g$", "G", { noremap = true, desc = "Go to Last Line" })
+
 vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
@@ -24,21 +28,21 @@ vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize W
 
 vim.keymap.set("n", "gk", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
-vim.keymap.set("n", "tj", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
+vim.keymap.set("n", "<A-j", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
 
-vim.keymap.set("n", "tk", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
+vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
 
-vim.keymap.set("n", "th", "<C-w>h", { noremap = true, desc = "Move to Left Window" })
+vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, desc = "Move to Left Window" })
 
-vim.keymap.set("n", "tl", "<C-w>l", { noremap = true, desc = "Move to Right Window" })
+vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, desc = "Move to Right Window" })
 
-vim.keymap.set("n", "<A-j>", "<C-w>J", { noremap = true })
+vim.keymap.set("n", "<A-J>", "<C-w>J", { noremap = true })
 
-vim.keymap.set("n", "<A-k>", "<C-w>K", { noremap = true })
+vim.keymap.set("n", "<A-K>", "<C-w>K", { noremap = true })
 
-vim.keymap.set("n", "<A-h>", "<C-w>H", { noremap = true })
+vim.keymap.set("n", "<A-H>", "<C-w>H", { noremap = true })
 
-vim.keymap.set("n", "<A-l>", "<C-w>L", { noremap = true })
+vim.keymap.set("n", "<A-L>", "<C-w>L", { noremap = true })
 
 vim.keymap.set("n", "<leader>wI", "<C-w>+", { noremap = true, desc = "Increase Window Height" })
 
@@ -61,8 +65,6 @@ vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save 
 vim.keymap.set("n", "<leader>wQ", "<cmd>wqa<cr>", { noremap = true, desc = "Save and Quit All Buffers" })
 
 vim.keymap.set("n", "gB", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
-
-vim.keymap.set("n", "tv", "v%", { nowait = true, desc = "Select all {[()]}" })
 
 vim.keymap.set("n", "]d", function()
 	vim.diagnostic.goto_next({ popup_opts = { border = "rounded", focusable = false } })
@@ -132,8 +134,6 @@ vim.keymap.set("n", "{", "{zz")
 vim.keymap.set("n", "}", "}zz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "n", "nzz")
-vim.keymap.set("n", "G", "Gzz")
-vim.keymap.set("n", "gg", "ggzz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "%", "%zz")

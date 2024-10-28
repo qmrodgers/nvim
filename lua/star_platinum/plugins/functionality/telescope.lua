@@ -111,23 +111,33 @@ return {
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("quicknote")
 		local keymap = vim.keymap
-		keymap.set("n", "tfr", builtin.oldfiles, { desc = "Find Recently Opened Files" })
-		keymap.set("n", "tfb", builtin.buffers, { desc = "Find Open Buffers" })
-		keymap.set("n", "tgf", builtin.git_files, { desc = "Search Git Files" })
-		keymap.set("n", "tff", builtin.find_files, { desc = "Search Files" })
-		keymap.set("n", "tfc", builtin.highlights, { desc = "Search Files" })
-		keymap.set("n", "tfh", builtin.help_tags, { desc = "Search Help" })
-		keymap.set("n", "tpp", builtin.resume, { desc = "Previous Picker" })
-		keymap.set("n", "tfq", "<cmd>Telescope quickfix<CR>", { desc = "Telescope Quick Fix" })
-		keymap.set("n", "tfw", "<cmd>Telescope quickfixhistory<CR>", { desc = "Telescope Quick Fix History" })
-		keymap.set("n", "tfg", "<cmd>Telescope highlights<CR>", { desc = "Telescope Highlight Groups" })
-		keymap.set("n", "tfc", "<cmd>Telescope commands<CR>", { desc = "Telescope Find Commands" })
-		keymap.set("n", "tfx", "<cmd>Telescope command_history<CR>", { desc = "Telescope Find Previous Commands" })
-		keymap.set("n", "tgs", require("telescope").extensions.live_grep_args.live_grep_args, { desc = "Grep Search" })
-		keymap.set("n", "tgw", lga_scs.grep_word_under_cursor, { desc = "Grep Search Current Word" })
-		keymap.set("n", "tfd", builtin.diagnostics, { desc = "Search Diagnostics Across Buffers" })
-		keymap.set("n", "tfk", ":Telescope keymaps<CR>", { desc = "Telescope keymaps" })
-		keymap.set("n", "t/", function()
+		keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Find Recently Opened Files" })
+		keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Open Buffers" })
+		keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search Git Files" })
+		keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Search Files" })
+		keymap.set("n", "<leader>fc", builtin.highlights, { desc = "Search Files" })
+		keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Search Help" })
+		keymap.set("n", "<leader>pp", builtin.resume, { desc = "Previous Picker" })
+		keymap.set("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Telescope Quick Fix" })
+		keymap.set("n", "<leader>fw", "<cmd>Telescope quickfixhistory<CR>", { desc = "Telescope Quick Fix History" })
+		keymap.set("n", "<leader>fg", "<cmd>Telescope highlights<CR>", { desc = "Telescope Highlight Groups" })
+		keymap.set("n", "<leader>fc", "<cmd>Telescope commands<CR>", { desc = "Telescope Find Commands" })
+		keymap.set(
+			"n",
+			"<leader>fx",
+			"<cmd>Telescope command_history<CR>",
+			{ desc = "Telescope Find Previous Commands" }
+		)
+		keymap.set(
+			"n",
+			"<leader>gs",
+			require("telescope").extensions.live_grep_args.live_grep_args,
+			{ desc = "Grep Search" }
+		)
+		keymap.set("n", "<leader>gw", lga_scs.grep_word_under_cursor, { desc = "Grep Search Current Word" })
+		keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Search Diagnostics Across Buffers" })
+		keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope keymaps" })
+		keymap.set("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
