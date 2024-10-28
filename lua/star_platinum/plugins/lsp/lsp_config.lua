@@ -87,6 +87,12 @@ return {
 			inlay_hints = inlay_hints,
 		})
 
+		lspconfig["ts_ls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			inlay_hints = inlay_hints,
+		})
+
 		lspconfig["emmet_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,

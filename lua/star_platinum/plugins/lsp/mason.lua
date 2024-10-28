@@ -28,6 +28,7 @@ return {
 				"graphql",
 				"pyright",
 				"jsonls",
+				"ts_ls",
 			},
 			automatic_installation = true,
 		})

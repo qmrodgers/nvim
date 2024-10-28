@@ -76,11 +76,6 @@ return {
 			extensions = {
 				quicknote = {
 					defaultScope = "Global", -- "CWD", "Global", or "CurrentBuffer"
-					mappings = {
-						i = {
-							["<C-d>"] = print("hello"),
-						},
-					},
 				},
 				live_grep_args = {
 					auto_quoting = true,
