@@ -9,14 +9,10 @@ vim.keymap.set({ "n", "i" }, "<C-l>", "<Right>", { noremap = true })
 
 vim.keymap.set(
 	"n",
-	"dab",
+	"<leader>db",
 	"<cmd>%bd|e#|bd#<CR>",
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
-
-vim.keymap.set("n", "g0", "gg", { noremap = true, desc = "Go to First Line" })
-
-vim.keymap.set("n", "g$", "G", { noremap = true, desc = "Go to Last Line" })
 
 vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
@@ -28,7 +24,7 @@ vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize W
 
 vim.keymap.set("n", "gk", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
-vim.keymap.set("n", "<A-j", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
+vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
 
 vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
 
@@ -108,10 +104,10 @@ vim.keymap.set("n", "[w", function()
 	vim.api.nvim_feedkeys("zz", "n", true)
 end)
 
-vim.keymap.set("n", "<leader>d", function()
+vim.keymap.set("n", "<leader>do", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
-	})
+	}, { desc = "Open Diagnostic Float" })
 end)
 
 -- Exit terminal more easily
@@ -148,3 +144,4 @@ vim.keymap.set("i", "<A-a>", "<ESC>A")
 vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<cr>")
 
 vim.keymap.set("n", "x", "_x")
+vim.keymap.set("n", "<leader>dB", "<cmd>bdelete!<cr>", { desc = "Delete current buffer without saving" })

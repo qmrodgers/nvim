@@ -40,3 +40,9 @@ vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
 vim.o.shell = "zsh"
 vim.o.shellcmdflag = "-c"
+vim.api.nvim_create_user_command("FormatPythonJson", function()
+	vim.cmd("%s/'/\"/g")
+	vim.cmd("%s/True/true/gi")
+	vim.cmd("%s/False/false/gi")
+	vim.cmd("%s/None/null/gi")
+end, {})
