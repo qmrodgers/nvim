@@ -40,13 +40,13 @@ vim.keymap.set("n", "<A-H>", "<C-w>H", { noremap = true })
 
 vim.keymap.set("n", "<A-L>", "<C-w>L", { noremap = true })
 
-vim.keymap.set("n", "<leader>wI", "<C-w>+", { noremap = true, desc = "Increase Window Height" })
+vim.keymap.set("n", "<leader>wI", "5<C-w>+", { noremap = true, desc = "Increase Window Height" })
 
-vim.keymap.set("n", "<leader>wD", "<C-w>-", { noremap = true, desc = "Decrease Window Height" })
+vim.keymap.set("n", "<leader>wD", "5<C-w>-", { noremap = true, desc = "Decrease Window Height" })
 
-vim.keymap.set("n", "<leader>wi", "<C-w>>", { noremap = true, desc = "Increase Window Width" })
+vim.keymap.set("n", "<leader>wi", "20<C-w>>", { noremap = true, desc = "Increase Window Width" })
 
-vim.keymap.set("n", "<leader>wd", "<C-w><", { noremap = true, desc = "Decrease Window Width" })
+vim.keymap.set("n", "<leader>wd", "20<C-w><", { noremap = true, desc = "Decrease Window Width" })
 
 vim.keymap.set("n", "<leader>ww", "<cmd>w<cr>", { noremap = true, desc = "Save Buffer" })
 
