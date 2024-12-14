@@ -1,71 +1,67 @@
 if vim.fn.has("win32") == 1 then
 	return {}
 else
+	local prefix = "<leader>a"
+	local user = vim.env.USER or "User"
+
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "CodeCompanionChatAdapter",
+		callback = function(args)
+			if args.data.adapter == nil or vim.tbl_isempty(args.data) then
+				return
+			end
+			vim.g.llm_name = args.data.adapter.name
+		end,
+	})
+
 	return {
-		"olimorris/codecompanion.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("codecompanion").setup({
+		{
+			"olimorris/codecompanion.nvim",
+			cmd = {
+				"CodeCompanion",
+				"CodeCompanionActions",
+				"CodeCompanionToggle",
+				"CodeCompanionAdd",
+				"CodeCompanionChat",
+			},
+			opts = {
 				strategies = {
 					chat = {
 						adapter = "copilot",
+						roles = {
+							llm = "  CodeCompanion",
+							user = " " .. user:sub(1, 1):upper() .. user:sub(2),
+						},
+						keymaps = {
+							close = { modes = { n = "q", i = "<C-e>" } },
+							stop = { modes = { n = "<C-c>" } },
+						},
 					},
-					inline = {
-						adapter = "copilot",
-					},
-					agent = {
-						adapter = "copilot",
+					inline = { adapter = "copilot" },
+					agent = { adapter = "copilot" },
+				},
+				display = {
+					chat = {
+						show_settings = true,
+						render_headers = false,
 					},
 				},
-			})
-			vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-			vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>cct",
-				"<cmd>CodeCompanionChat Toggle<cr>",
-				{ noremap = true, silent = true }
-			)
-			vim.api.nvim_set_keymap(
-				"v",
-				"<leader>cct",
-				"<cmd>CodeCompanionChat Toggle<cr>",
-				{ noremap = true, silent = true }
-			)
-			vim.api.nvim_set_keymap(
-				"v",
-				"<leader>cca",
-				"<cmd>CodeCompanionChat Add<cr>",
-				{ noremap = true, silent = true }
-			)
-
-			-- Expand 'cc' into 'CodeCompanion' in the command line
-			vim.cmd([[cab cc CodeCompanion]])
-
-			-- Keybindings for the chat buffer
-			-- <CR>|<C-s> to send a message to the LLM
-			-- <C-c> to close the chat buffer
-			-- q to stop the current request
-			-- ga to change the adapter for the currentchat
-			-- gc to insert a codeblock in the chat buffer
-			-- gd to view/debug the chat buffer's contents
-			-- gf to fold any codeblocks in the chat buffer
-			-- gr to regenerate the last response
-			-- gs to toggle the system prompt on/off
-			-- gx to clear the chat buffer's contents
-			-- gy to yank the last codeblock in the chat buffer
-			-- [[ to move to the previous header
-			-- ]] to move to the next header
-			-- { to move to the previous chat
-			-- } to move to the next chat
-			--
-			-- Keybindings for the inline buffer
-			--ga - Accept an inline edit
-			-- gr - Reject an inline edit
-		end,
+			},
+			keys = {
+				{ prefix .. "a", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Action Palette" },
+				{ prefix .. "c", "<cmd>CodeCompanionChat<cr>", mode = { "n", "v" }, desc = "New Chat" },
+				{ prefix .. "A", "<cmd>CodeCompanionAdd<cr>", mode = "v", desc = "Add Code" },
+				{ prefix .. "i", "<cmd>CodeCompanion<cr>", mode = "n", desc = "Inline Prompt" },
+				{ prefix .. "C", "<cmd>CodeCompanionToggle<cr>", mode = "n", desc = "Toggle Chat" },
+			},
+		},
+		-- {
+		-- 	"folke/which-key.nvim",
+		-- 	opts = {
+		-- 		spec = {
+		-- 			{ prefix, group = "ai", icon = "󱚦 " },
+		-- 		},
+		-- 	},
+		-- },
 	}
 end
