@@ -1,0 +1,22 @@
+return {
+	-- "bennypowers/nvim-regexplainer",
+	-- config = function()
+	-- 	require("regexplainer").setup({
+	-- 		auto = true,
+	-- 		mappings = {
+	-- 			toggle = "<leader>ret",
+	-- 			show = "<leader>res",
+	-- 			hide = "<leader>reh",
+	-- 			-- examples, not defaults:
+	-- 			-- show = 'gS',
+	-- 			-- hide = 'gH',
+	-- 			-- show_split = 'gP',
+	-- 			-- show_popup = 'gU',
+	-- 		},
+	-- 	})
+	-- end,
+	-- requires = {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	"MunifTanjim/nui.nvim",
+	-- },
+}

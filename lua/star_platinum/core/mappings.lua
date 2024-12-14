@@ -14,7 +14,7 @@ vim.keymap.set(
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
 
-vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
+-- vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
 
@@ -22,23 +22,23 @@ vim.keymap.set("n", "<leader>ss", "<C-w>s", { noremap = true, desc = "Split Wind
 
 vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize Window Sizes" })
 
-vim.keymap.set("n", "gk", "<C-w>q", { noremap = true, desc = "Kill Window" })
+vim.keymap.set("n", "<c-s-k>", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
-vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
-
-vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
-
-vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, desc = "Move to Left Window" })
-
-vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, desc = "Move to Right Window" })
-
-vim.keymap.set("n", "<A-J>", "<C-w>J", { noremap = true })
-
-vim.keymap.set("n", "<A-K>", "<C-w>K", { noremap = true })
-
-vim.keymap.set("n", "<A-H>", "<C-w>H", { noremap = true })
-
-vim.keymap.set("n", "<A-L>", "<C-w>L", { noremap = true })
+-- vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
+--
+-- vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
+--
+-- vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, desc = "Move to Left Window" })
+--
+-- vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, desc = "Move to Right Window" })
+--
+-- vim.keymap.set("n", "<A-J>", "<C-w>J", { noremap = true })
+--
+-- vim.keymap.set("n", "<A-K>", "<C-w>K", { noremap = true })
+--
+-- vim.keymap.set("n", "<A-H>", "<C-w>H", { noremap = true })
+--
+-- vim.keymap.set("n", "<A-L>", "<C-w>L", { noremap = true })
 
 vim.keymap.set("n", "<leader>wI", "5<C-w>+", { noremap = true, desc = "Increase Window Height" })
 
