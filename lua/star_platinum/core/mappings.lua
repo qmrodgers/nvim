@@ -116,7 +116,7 @@ vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>cn", ":cnext<cr>zz")
 vim.keymap.set("n", "<leader>cb", ":cprevious<cr>zz")
 vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
-vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
+vim.keymap.set("n", "<leader>ck", ":cclose<cr>zz")
 
 vim.keymap.set("n", "<space>", "<nop>")
 
