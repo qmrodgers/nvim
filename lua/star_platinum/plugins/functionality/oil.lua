@@ -7,6 +7,8 @@ return {
 			keymaps = {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",
+				["<C-d>"] = "actions.refresh",
+				["<C-l>"] = false,
 				["~"] = {
 					callback = function()
 						require("oil.actions").cd.callback()

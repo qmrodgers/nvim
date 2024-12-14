@@ -27,6 +27,15 @@ return {
 					},
 				},
 			},
+			-- messages = {
+			-- 	enabled = false,
+			-- },
+			-- popupmenu = {
+			-- 	enabled = false,
+			-- },
+			-- notify = {
+			-- 	enabled = false,
+			-- },
 			presets = {
 				long_message_to_split = true, -- long messages will be sent to a split
 			},
