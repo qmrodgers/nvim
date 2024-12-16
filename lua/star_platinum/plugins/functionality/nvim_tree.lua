@@ -38,6 +38,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "\\", "<Cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "\\\\", "<Cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 	end,
 }

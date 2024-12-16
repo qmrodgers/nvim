@@ -57,7 +57,7 @@ return {
 					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
-				["C-y"] = cmp.mapping.confirm({
+				["<C-y>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
