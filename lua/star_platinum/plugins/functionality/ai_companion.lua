@@ -54,17 +54,5 @@ local config = {
 }
 if vim.fn.has("win32") == 1 then
 else
-	local prefix = "<leader>a"
-	local user = vim.env.USER or "User"
-
-	vim.api.nvim_create_autocmd("User", {
-		pattern = "CodeCompanionChatAdapter",
-		callback = function(args)
-			if args.data.adapter == nil or vim.tbl_isempty(args.data) then
-				return
-			end
-			vim.g.llm_name = args.data.adapter.name
-		end,
-	})
 end
 return config
