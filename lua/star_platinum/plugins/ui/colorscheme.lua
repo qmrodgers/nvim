@@ -118,8 +118,11 @@ return {
 				transparent_mode = false,
 			})
 			vim.g.background = "dark"
-			vim.cmd("colorscheme gruvbox")
+			-- vim.cmd("colorscheme gruvbox")
 		end,
 		opts = ...,
+	},
+	{
+		"rebelot/kanagawa.nvim",
 	},
 }
