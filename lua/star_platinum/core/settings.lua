@@ -38,13 +38,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
 vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
-vim.o.shellcmdflag = "-c"
+vim.g.shellcmdflag = "-c"
 if vim.fn.has("win32") == 1 then
-	vim.opt.shell = os.getenv("GIT_SHELL")
+	vim.g.shell = os.getenv("GIT_SHELL")
 	vim.g.terminal_emulator = os.getenv("GIT_BASH")
-	vim.o.shellslash = true
+	vim.g.shellslash = true
 else
-	vim.o.shell = "zsh"
+	vim.g.shell = "zsh"
 end
 vim.api.nvim_create_user_command("FormatPythonJson", function()
 	vim.cmd("%s/'/\"/g")

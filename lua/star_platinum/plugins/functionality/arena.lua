@@ -5,6 +5,7 @@ return {
 	config = function()
 		require("arena").setup({
 			devicons = true,
+			max_items = 8,
 		})
 		vim.keymap.set("n", "<leader>ao", function()
 			require("arena").open()

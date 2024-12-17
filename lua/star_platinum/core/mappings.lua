@@ -24,6 +24,8 @@ vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize W
 
 vim.keymap.set("n", "<c-s-k>", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
+vim.keymap.set("i", "<C-v>", "<C-V>", { noremap = true, desc = "Paste" })
+
 -- vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, desc = "Move to Lower Window" })
 --
 -- vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, desc = "Move to Upper Window" })
