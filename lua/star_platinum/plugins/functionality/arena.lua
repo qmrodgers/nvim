@@ -1,5 +1,7 @@
 return {
-	"dzfrias/arena.nvim",
+	"qmrodgers/arena.nvim",
+	branch = "quaid-dev",
+	-- dir = "~/Projects/nvim_forks/arena.nvim/",
 	event = "BufWinEnter",
 	-- Calls `.setup()` automatically
 	config = function()
