@@ -102,41 +102,51 @@ return {
 				},
 			})
 		end
+
+		local ivy_theme = function(func, opts)
+			return function()
+				func(require("telescope.themes").get_ivy(opts))
+			end
+		end
+
+		local dropdown_theme = function(func, opts)
+			return function()
+				func(require("telescope.themes").get_dropdown(opts))
+			end
+		end
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("quicknote")
 		local keymap = vim.keymap
-		keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Find Recently Opened Files" })
-		keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Open Buffers" })
-		keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search Git Files" })
-		keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Search Files" })
-		keymap.set("n", "<leader>fc", builtin.highlights, { desc = "Search Files" })
-		keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Search Help" })
-		keymap.set("n", "<leader>pp", builtin.resume, { desc = "Previous Picker" })
-		keymap.set("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { desc = "Telescope Quick Fix" })
-		keymap.set("n", "<leader>fw", "<cmd>Telescope quickfixhistory<CR>", { desc = "Telescope Quick Fix History" })
-		keymap.set("n", "<leader>fg", "<cmd>Telescope highlights<CR>", { desc = "Telescope Highlight Groups" })
-		keymap.set("n", "<leader>fc", "<cmd>Telescope commands<CR>", { desc = "Telescope Find Commands" })
-		keymap.set(
-			"n",
-			"<leader>fx",
-			"<cmd>Telescope command_history<CR>",
-			{ desc = "Telescope Find Previous Commands" }
-		)
+		keymap.set("n", "<leader>fr", ivy_theme(builtin.oldfiles), { desc = "Find Recently Opened Files" })
+		keymap.set("n", "<leader>fb", ivy_theme(builtin.buffers), { desc = "Find Open Buffers" })
+		keymap.set("n", "<leader>gf", ivy_theme(builtin.git_files), { desc = "Search Git Files" })
+		keymap.set("n", "<leader>ff", ivy_theme(builtin.find_files), { desc = "Search Files" })
+		keymap.set("n", "<leader>fc", ivy_theme(builtin.highlights), { desc = "Search Files" })
+		keymap.set("n", "<leader>fh", ivy_theme(builtin.help_tags), { desc = "Search Help" })
+		keymap.set("n", "<leader>pp", ivy_theme(builtin.resume), { desc = "Previous Picker" })
+		keymap.set("n", "<leader>fq", ivy_theme(builtin.quickfix), { desc = "Telescope Quick Fix" })
+		keymap.set("n", "<leader>fw", ivy_theme(builtin.quickfixhistory), { desc = "Telescope Quick Fix History" })
+		keymap.set("n", "<leader>fg", ivy_theme(builtin.highlights), { desc = "Telescope Highlight Groups" })
+		keymap.set("n", "<leader>fc", ivy_theme(builtin.highlights), { desc = "Telescope Find Commands" })
+		keymap.set("n", "<leader>fx", ivy_theme(builtin.command_history), { desc = "Telescope Find Previous Commands" })
 		keymap.set(
 			"n",
 			"<leader>gs",
-			require("telescope").extensions.live_grep_args.live_grep_args,
+			ivy_theme(require("telescope").extensions.live_grep_args.live_grep_args),
 			{ desc = "Grep Search" }
 		)
-		keymap.set("n", "<leader>gw", lga_scs.grep_word_under_cursor, { desc = "Grep Search Current Word" })
-		keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Search Diagnostics Across Buffers" })
-		keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Telescope keymaps" })
-		keymap.set("n", "<leader>/", function()
-			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		keymap.set("n", "<leader>gw", ivy_theme(lga_scs.grep_word_under_cursor), { desc = "Grep Search Current Word" })
+		keymap.set("n", "<leader>fd", ivy_theme(builtin.diagnostics), { desc = "Search Diagnostics Across Buffers" })
+		keymap.set("n", "<leader>fk", ivy_theme(builtin.keymaps), { desc = "Telescope keymaps" })
+		keymap.set(
+			"n",
+			"<leader>/",
+			dropdown_theme(builtin.current_buffer_fuzzy_find, {
 				winblend = 10,
 				previewer = false,
-			}))
-		end, { desc = "Fuzzy Search in Buffer" })
+			}),
+			{ desc = "Fuzzy Search in Buffer" }
+		)
 	end,
 }

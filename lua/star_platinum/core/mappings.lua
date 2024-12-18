@@ -147,3 +147,7 @@ vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<cr>")
 
 vim.keymap.set("n", "x", "_x")
 vim.keymap.set("n", "<leader>dB", "<cmd>bdelete!<cr>", { desc = "Delete current buffer without saving" })
+
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Source current file" })
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+vim.keymap.set("v", "<leader>x", ":lua<CR>")
