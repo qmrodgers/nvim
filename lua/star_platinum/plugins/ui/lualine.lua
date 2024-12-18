@@ -7,23 +7,30 @@ local function getCWDName()
 	return dirName
 end
 
-local function getVimMode()
-    local mode = vim.fn.mode()
-    if mode == "n" then
-        return ""
-    elseif mode == "i" then
-        return ""
-    elseif mode == "v" or mode == "V" or mode == "^V" then
-        return ""
-    elseif mode == "r" then
-        return "󰓡"
-    elseif mode == "c" then
-        return "󰍹"
-    else
-        return ""
-    end
+local getVimMode = function()
+	local mode = vim.fn.mode()
+	if mode == "n" then
+		return ""
+	elseif mode == "i" then
+		return ""
+	elseif mode == "v" or mode == "V" or mode == "^V" then
+		return ""
+	elseif mode == "r" then
+		return "󰓡"
+	elseif mode == "c" then
+		return "󰍹"
+	else
+		return ""
+	end
 end
 
+local getDiffStatus = function()
+	if vim.g.diffview_open then
+		return "DIFF"
+	else
+		return ""
+	end
+end
 
 return {
 	"nvim-lualine/lualine.nvim",
@@ -34,8 +41,9 @@ return {
 				theme = "auto",
 			},
 			sections = {
-                lualine_a = { getVimMode, "mode"  },
+				lualine_a = { getVimMode, "mode" },
 				lualine_c = { getCWDName, "filename" },
+				lualine_x = { getDiffStatus },
 			},
 		})
 	end,

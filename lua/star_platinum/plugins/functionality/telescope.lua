@@ -6,6 +6,7 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-live-grep-args.nvim",
 		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-symbols.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -130,6 +131,7 @@ return {
 		keymap.set("n", "<leader>fg", ivy_theme(builtin.highlights), { desc = "Telescope Highlight Groups" })
 		keymap.set("n", "<leader>fc", ivy_theme(builtin.highlights), { desc = "Telescope Find Commands" })
 		keymap.set("n", "<leader>fx", ivy_theme(builtin.command_history), { desc = "Telescope Find Previous Commands" })
+		keymap.set("n", "<leader>fs", ivy_theme(builtin.symbols), { desc = "Telescope Find Symbols" })
 		keymap.set(
 			"n",
 			"<leader>gs",
