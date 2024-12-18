@@ -38,7 +38,9 @@ local config = {
 							content = function()
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
-									[[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following template and diff:
+									[[
+                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following template and diff:
+
                   ```template
                   :_gitmoji_: [feat, refactor, fix, etc]: _Short description of the change_
                   ```
@@ -46,6 +48,7 @@ local config = {
                   ```diff
                   %s
                   ```
+
                   ]],
 									git_diff
 								)
@@ -81,7 +84,7 @@ local config = {
 			{ prefix .. "c", "<cmd>CodeCompanionChat<cr>", mode = { "n", "v" }, desc = "New Chat" },
 			{ prefix .. "A", "<cmd>CodeCompanionAdd<cr>", mode = "v", desc = "Add Code" },
 			{ prefix .. "i", "<cmd>CodeCompanion<cr>", mode = "n", desc = "Inline Prompt" },
-			{ prefix .. "C", "<cmd>CodeCompanionToggle<cr>", mode = "n", desc = "Toggle Chat" },
+			{ prefix .. "t", "<cmd>CodeCompanionChat Toggle<cr>", mode = "n", desc = "Toggle Chat" },
 		},
 	},
 }
