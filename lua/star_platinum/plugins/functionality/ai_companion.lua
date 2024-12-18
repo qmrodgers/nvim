@@ -21,6 +21,39 @@ local config = {
 			"CodeCompanionChat",
 		},
 		opts = {
+			prompt_library = {
+				["Short Commit"] = {
+					strategy = "chat",
+					description = "Ask for a short commit message",
+					opts = {
+						index = 10,
+						is_default = true,
+						is_slash_cmd = true,
+						short_name = "short_commit",
+						auto_submit = true,
+					},
+					prompts = {
+						{
+							role = "user",
+							content = function()
+								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
+								return string.format(
+									[[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following template and diff:
+                  ```template
+                  :_gitmoji_: [feat, refactor, fix, etc]: _Short description of the change_
+                  ```
+
+                  ```diff
+                  %s
+                  ```
+                  ]],
+									git_diff
+								)
+							end,
+						},
+					},
+				},
+			},
 			strategies = {
 				chat = {
 					adapter = "copilot",
