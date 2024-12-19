@@ -42,7 +42,7 @@ local config = {
                   You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following template and diff:
 
                   ```template
-                  :_gitmoji_: [feat, refactor, fix, etc]: _Short description of the change_
+                  _gitmoji in unicode format_ _feat, refactor, fix, etc., or any other best practice git commit word_: _Short description of the change_
                   ```
 
                   ```diff

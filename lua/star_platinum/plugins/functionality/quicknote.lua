@@ -1,5 +1,5 @@
 return {
-	"RutaTang/quicknote.nvim",
+	"qmrodgers/quicknote.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("quicknote").setup({
@@ -41,7 +41,7 @@ return {
 				-- require("quicknote").DeleteNoteAtGlobal()
 				-- vim.fn.feedkeys(note .. "<CR>")
 				vim.g.last_deleted_note = entry
-				checkAndDeleteNoteFile(entry.value)
+				checkAndDeleteNoteFile(entry.path)
 				require("telescope.actions").close(prompt_bufnr)
 				vim.defer_fn(function()
 					Get_Quicknote_Picker(scope)

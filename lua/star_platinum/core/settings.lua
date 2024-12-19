@@ -38,11 +38,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
 vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
-vim.g.shellcmdflag = "-c"
 if vim.fn.has("win32") == 1 then
-	vim.g.shell = os.getenv("GIT_SHELL")
-	vim.g.terminal_emulator = os.getenv("GIT_BASH")
-	vim.g.shellslash = true
+	vim.go.shell = "bash"
+	vim.go.shellcmdflag = "-c"
+	vim.go.shellxquote = ""
 else
 	vim.g.shell = "zsh"
 end
