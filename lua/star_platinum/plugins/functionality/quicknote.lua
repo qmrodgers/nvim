@@ -11,6 +11,7 @@ return {
 
 		local checkAndDeleteNoteFile = function(noteFilePath)
 			local fs_stat = vim.loop.fs_stat or vim.uv.fs_stat
+			local deleted = false
 			fs_stat(noteFilePath, function(err, _)
 				if err then
 					print("Note not found.")
@@ -43,6 +44,8 @@ return {
 				vim.g.last_deleted_note = entry
 				checkAndDeleteNoteFile(entry.path)
 				require("telescope.actions").close(prompt_bufnr)
+				require("quicknote.core.sign").HideNoteSigns()
+				require("quicknote.core.sign").ShowNoteSigns()
 				vim.defer_fn(function()
 					Get_Quicknote_Picker(scope)
 				end, 50)

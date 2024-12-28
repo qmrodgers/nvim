@@ -1,5 +1,5 @@
 local opts = {
-	html_output = "/tmp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
+	html_output = "/temp/markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
 	hide_toolbar = false, -- (default)
 	grace_period = 3600000, -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
 }
@@ -9,7 +9,8 @@ if vim.fn.has("win32") == 1 then
 end
 
 return {
-	"Zeioth/markmap.nvim",
+	-- "qmrodgers/markmap.nvim",
+	dir = "~/Projects/nvim_forks/markmap.nvim",
 	build = "yarn global add markmap-cli",
 	cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
 	opts = opts,
