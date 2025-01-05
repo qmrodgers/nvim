@@ -6,10 +6,10 @@ return {
 		config = function()
 			require("cyberdream").setup({
 				-- Enable transparent background
-				transparent = false,
+				transparent = true,
 
 				-- Enable italics comments
-				italic_comments = false,
+				italic_comments = true,
 
 				-- Replace all fillchars with ' ' for the ultimate clean look
 				hide_fillchars = false,
@@ -25,7 +25,7 @@ return {
 
 				theme = {
 					variant = "default", -- use "light" for the light variant. Also accepts "auto" to set dark or light colors based on the current value of `vim.o.background`
-					saturation = 1, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
+					saturation = 0.8, -- accepts a value between 0 and 1. 0 will be fully desaturated (greyscale) and 1 will be the full color (default)
 					highlights = {
 						-- Highlight groups to override, adding new groups is also possible
 						-- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
@@ -129,5 +129,12 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			-- vim.cmd("colorscheme rose-pine")
+		end,
 	},
 }

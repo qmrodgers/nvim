@@ -1,13 +1,13 @@
 return {
 	"stevearc/oil.nvim",
-	dependencies = "nvim-tree/nvim-web-devicons",
+	dependencies = { "echasnovski/mini.icons", version = false },
 	config = function()
 		require("oil").setup({
-			columns = { "icon", "size", "time" },
+			columns = { "size", "birthtime", "mtime", "icon" },
 			keymaps = {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",
-				["<C-d>"] = "actions.refresh",
+				["<C-S-r>"] = "actions.refresh",
 				["<C-l>"] = false,
 				["~"] = {
 					callback = function()
@@ -17,9 +17,23 @@ return {
 					end,
 				},
 			},
+			buf_options = {
+				buflisted = false,
+			},
+			win_options = {
+				wrap = false,
+				signcolumn = "no",
+				cursorcolumn = true,
+				foldcolumn = "0",
+				spell = false,
+				list = false,
+				conceallevel = 3,
+				concealcursor = "nvic",
+			},
 			view_options = {
 				show_hidden = true,
 			},
+			watch_for_changes = true,
 		})
 		vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 		vim.keymap.set("n", "<leader>-", require("oil").toggle_float)

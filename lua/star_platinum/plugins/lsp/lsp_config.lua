@@ -85,6 +85,7 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			inlay_hints = inlay_hints,
+			filetypes = { "svelte" },
 		})
 
 		lspconfig["ts_ls"].setup({

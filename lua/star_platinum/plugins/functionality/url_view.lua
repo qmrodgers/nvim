@@ -1,3 +1,4 @@
+vim.keymap.set({ "n", "v" }, "<leader>uv", "<cmd>UrlView<CR>", { noremap = true, silent = true })
 local config = {}
 if vim.fn.has("win32") == 1 then
 	config = {

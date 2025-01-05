@@ -140,6 +140,6 @@ return {
 				},
 			})
 		end,
-		ft = "gitcommit",
+		ft = { "gitcommit", "COMMIT_EDITMSG" },
 	},
 }
