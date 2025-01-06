@@ -32,6 +32,15 @@ require("nvim-treesitter.configs").setup({
 		--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 		additional_vim_regex_highlighting = { "ruby" },
 	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<C-Space>",
+			node_incremental = "v",
+			scope_incremental = false,
+			node_decremental = "V",
+		},
+	},
 	indent = { enable = true, disable = { "ruby" } },
 	textobjects = {
 		move = {
