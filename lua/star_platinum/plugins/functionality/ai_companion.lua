@@ -38,15 +38,7 @@ local config = {
 							content = function()
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
-									[[You are an expert at following the Conventional Commit specification. Given the provided conventional commit format, unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
-
-                  ```conventional commit format
-                    <unicode gitmoji> <type>[optional scope]: <description>
-
-                    [optional body]
-
-                    [optional footer(s)]
-                  ```
+									[[You are an expert at following the Conventional Commit specification. Given the provided unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
 
                   ```unicode gitmoji mappings: (type) -> (gitmoji)
                     feat -> ✨
@@ -92,11 +84,7 @@ local config = {
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
 									[[
-                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following format, gitmoji mappings, and diff:
-
-                  ```conventional commit format
-                    <unicode gitmoji> <type>[optional scope]: <description>
-                  ```
+                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following gitmoji mappings and diff:
 
                   ```unicode gitmoji mappings: (type) -> (gitmoji)
                     feat -> ✨

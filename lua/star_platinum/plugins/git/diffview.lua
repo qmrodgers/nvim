@@ -625,17 +625,8 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gd", function()
-			vim.g.diffview_open = vim.g.diffview_open or false
-
-			if vim.g.diffview_open then
-				vim.cmd("DiffviewClose")
-				vim.g.diffview_open = false
-			else
-				vim.cmd("DiffviewOpen")
-				vim.g.diffview_open = true
-			end
-		end, { desc = "Open Diffview" })
+		vim.keymap.set("n", "<leader>gd", ":DiffviewOpen ", { desc = "Open Diffview" })
+		vim.keymap.set("n", "<leader>gD", ":DiffviewClose<CR>", { desc = "Close Diffview" })
 	end,
 
 	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory<CR>", { desc = "Open Diffview File History for Branch" }),
