@@ -1,6 +1,7 @@
 return {
 	"gbprod/yanky.nvim",
 	config = function()
+		local utils = require("yanky.utils")
 		local mapping = require("yanky.telescope.mapping")
 		require("yanky").setup({
 			highlight = {
@@ -8,12 +9,21 @@ return {
 			},
 			picker = {
 				telescope = {
+					use_default_mappings = false,
 					mappings = {
 						i = {
 							["<C-k>"] = require("telescope.actions").move_selection_previous,
 							["<C-j>"] = require("telescope.actions").move_selection_next,
 							["<C-p>"] = mapping.put("p"),
 							["<C-P>"] = mapping.put("P"),
+							["<c-x>"] = mapping.delete(),
+							["<c-r>"] = mapping.set_register(utils.get_default_register()),
+						},
+						n = {
+							p = mapping.put("p"),
+							P = mapping.put("P"),
+							d = mapping.delete(),
+							r = mapping.set_register(utils.get_default_register()),
 						},
 					},
 				},
