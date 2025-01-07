@@ -151,3 +151,4 @@ vim.keymap.set("n", "<leader>dB", "<cmd>bdelete!<cr>", { desc = "Delete current 
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Source current file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
+vim.keymap.set("n", "gV", "'[V']", { desc = "Select latest pasted content" })
