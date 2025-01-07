@@ -4,9 +4,9 @@ return {
 	opts = {
 		lsp = {
 			override = {
-				["cmp.entry.get_documentation"] = true,
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 				["vim.lsp.util.stylize_markdown"] = true,
+				["cmp.entry.get_documentation"] = true,
 			},
 		},
 		routes = {
@@ -53,6 +53,11 @@ return {
 			end,
 			mode = "c",
 			desc = "Redirect Command Line",
+		},
+		{
+			"<leader>nt",
+			":Noice telescope",
+			desc = "Telescope Noice Messages",
 		},
 		{
 			"<leader>nl",

@@ -2,21 +2,21 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		config = function()
-			vim.keymap.set("n", "<leader>bpt", function()
+			vim.keymap.set("n", "<leader>bt", function()
 				require("dap").toggle_breakpoint()
-			end)
-			vim.keymap.set("n", "<leader>bpc", function()
+			end, { desc = "DAP: Toggle Breakpoint" })
+			vim.keymap.set("n", "<leader>bc", function()
 				require("dap").continue()
-			end)
-			vim.keymap.set("n", "<leader>bpi", function()
+			end, { desc = "DAP: Continue" })
+			vim.keymap.set("n", "<leader>bi", function()
 				require("dap").step_into()
-			end)
-			vim.keymap.set("n", "<leader>bpo", function()
+			end, { desc = "DAP: Step Into" })
+			vim.keymap.set("n", "<leader>bo", function()
 				require("dap").step_over()
-			end)
-			vim.keymap.set("n", "<leader>bpr", function()
+			end, { desc = "DAP: Step Over" })
+			vim.keymap.set("n", "<leader>br", function()
 				require("dap").repl.open()
-			end)
+			end, { desc = "DAP: REPL" })
 		end,
 	},
 	-- {

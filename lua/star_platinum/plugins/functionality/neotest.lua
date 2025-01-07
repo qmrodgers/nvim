@@ -10,7 +10,11 @@ return {
 	config = function()
 		require("neotest").setup({
 			adapters = {
-				require("neotest-python"),
+				require("neotest-python")({
+					runner = "unittest",
+					python = "python",
+					dap = { justmycode = false },
+				}),
 			},
 		})
 	end,

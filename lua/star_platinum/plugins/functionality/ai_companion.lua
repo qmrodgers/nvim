@@ -40,18 +40,18 @@ local config = {
 								return string.format(
 									[[You are an expert at following the Conventional Commit specification. Given the provided unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
 
-                  ```unicode gitmoji mappings: (type) -> (gitmoji)
-                    feat -> ✨
-                    fix -> 🐛
-                    docs -> 📚
-                    style -> 💄
-                    refactor -> 🎨
-                    perf -> ⚡
-                    test -> 🚨
-                    build -> 🏗️
-                    ci -> 🚀
-                    chore -> 🔧
-                    revert -> ⏪
+                  ```unicode gitmoji mappings:
+                    ✨ feat:
+                    🐛 fix:
+                    📚 docs:
+                    💄 style:
+                    ♻️ refactor:
+                    ⚡ perf:
+                    🚨 test:
+                    🏗️ build:
+                    🚀 ci:
+                    🔧 chore:
+                    ⏪ revert:
                   ```
 
                   ```diff
@@ -86,18 +86,18 @@ local config = {
 									[[
                   You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following gitmoji mappings and diff:
 
-                  ```unicode gitmoji mappings: (type) -> (gitmoji)
-                    feat -> ✨
-                    fix -> 🐛
-                    docs -> 📚
-                    style -> 💄
-                    refactor -> 🎨
-                    perf -> ⚡
-                    test -> 🚨
-                    build -> 🏗️
-                    ci -> 🚀
-                    chore -> 🔧
-                    revert -> ⏪
+                  ```unicode gitmoji mappings:
+                    ✨ feat:
+                    🐛 fix:
+                    📚 docs:
+                    💄 style:
+                    ♻️ refactor:
+                    ⚡ perf:
+                    🚨 test:
+                    🏗️ build:
+                    🚀 ci:
+                    🔧 chore:
+                    ⏪ revert:
                   ```
 
                   ```diff
