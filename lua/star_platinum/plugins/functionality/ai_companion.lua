@@ -22,6 +22,59 @@ local config = {
 		},
 		opts = {
 			prompt_library = {
+				["Generate a Commit Message"] = {
+					strategy = "chat",
+					description = "Generate a commit message",
+					opts = {
+						index = 10,
+						is_default = true,
+						is_slash_cmd = true,
+						short_name = "commit",
+						auto_submit = true,
+					},
+					prompts = {
+						{
+							role = "user",
+							content = function()
+								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
+								return string.format(
+									[[You are an expert at following the Conventional Commit specification. Given the provided conventional commit format, unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
+
+                  ```conventional commit format
+                    <unicode gitmoji> <type>[optional scope]: <description>
+
+                    [optional body]
+
+                    [optional footer(s)]
+                  ```
+
+                  ```unicode gitmoji mappings: (type) -> (gitmoji)
+                    feat -> ✨
+                    fix -> 🐛
+                    docs -> 📚
+                    style -> 💄
+                    refactor -> 🎨
+                    perf -> ⚡
+                    test -> 🚨
+                    build -> 🏗️
+                    ci -> 🚀
+                    chore -> 🔧
+                    revert -> ⏪
+                  ```
+
+                  ```diff
+                  %s
+                  ```
+                ]],
+									git_diff
+								)
+							end,
+							opts = {
+								contains_code = true,
+							},
+						},
+					},
+				},
 				["Short Commit"] = {
 					strategy = "chat",
 					description = "Ask for a short commit message",
@@ -39,16 +92,29 @@ local config = {
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
 									[[
-                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following template and diff:
+                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following format, gitmoji mappings, and diff:
 
-                  ```template
-                  _gitmoji in unicode format_ _feat, refactor, fix, etc., or any other best practice git commit word_: _Short description of the change_
+                  ```conventional commit format
+                    <unicode gitmoji> <type>[optional scope]: <description>
+                  ```
+
+                  ```unicode gitmoji mappings: (type) -> (gitmoji)
+                    feat -> ✨
+                    fix -> 🐛
+                    docs -> 📚
+                    style -> 💄
+                    refactor -> 🎨
+                    perf -> ⚡
+                    test -> 🚨
+                    build -> 🏗️
+                    ci -> 🚀
+                    chore -> 🔧
+                    revert -> ⏪
                   ```
 
                   ```diff
                   %s
                   ```
-
                   ]],
 									git_diff
 								)
