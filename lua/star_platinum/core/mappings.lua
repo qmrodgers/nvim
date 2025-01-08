@@ -9,7 +9,7 @@ vim.keymap.set({ "n", "i" }, "<C-l>", "<Right>", { noremap = true })
 
 vim.keymap.set(
 	"n",
-	"<leader>db",
+	"<leader>bd",
 	"<cmd>%bd|e#|bd#<CR>",
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
@@ -106,11 +106,11 @@ vim.keymap.set("n", "[w", function()
 	vim.api.nvim_feedkeys("zz", "n", true)
 end)
 
-vim.keymap.set("n", "<leader>do", function()
+vim.keymap.set("n", "<leader>df", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
-	}, { desc = "Open Diagnostic Float" })
-end)
+	})
+end, { desc = "Open Diagnostic Float" })
 
 -- Exit terminal more easily
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", { noremap = true, silent = true })
@@ -146,7 +146,7 @@ vim.keymap.set("i", "<A-a>", "<ESC>A")
 vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<cr>")
 
 vim.keymap.set("n", "x", "_x")
-vim.keymap.set("n", "<leader>dB", "<cmd>bdelete!<cr>", { desc = "Delete current buffer without saving" })
+vim.keymap.set("n", "<leader>bD", "<cmd>bdelete!<cr>", { desc = "Delete current buffer without saving" })
 
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Source current file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")

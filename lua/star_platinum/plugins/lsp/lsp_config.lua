@@ -37,10 +37,10 @@ return {
 			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
 			opts.desc = "Show Buffer Diagnostics"
-			keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+			keymap.set("n", "<leader>fD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 			opts.desc = "Show Line Diagnostics"
-			keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+			keymap.set("n", "<leader>od", vim.diagnostic.open_float, opts)
 
 			opts.desc = "Go To Previous Diagnostic"
 			keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)

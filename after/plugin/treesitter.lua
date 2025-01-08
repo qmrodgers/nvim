@@ -139,6 +139,6 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 })
-vim.keymap.set({ "n", "x", "o" }, "<leader>tr", function()
+vim.keymap.set({ "n", "x", "o" }, "<leader>it", function()
 	vim.treesitter.inspect_tree()
 end, { noremap = true, desc = "Inspect Tree" })
