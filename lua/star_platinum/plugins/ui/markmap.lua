@@ -9,8 +9,8 @@ if vim.fn.has("win32") == 1 then
 end
 
 return {
-	-- "qmrodgers/markmap.nvim",
-	dir = "~/Projects/nvim_forks/markmap.nvim",
+	"qmrodgers/markmap.nvim",
+	-- dir = "~/Projects/nvim_forks/markmap.nvim",
 	build = "yarn global add markmap-cli",
 	cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
 	opts = opts,
