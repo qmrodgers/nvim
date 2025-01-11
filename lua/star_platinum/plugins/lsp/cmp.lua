@@ -42,7 +42,7 @@ return {
 
 			cmp.setup({
 				completion = {
-					completeopt = "menu,menuone,noinsert",
+					completeopt = "menu,menuone,noinsert,noselect",
 				},
 				snippet = {
 					expand = function(args)
@@ -56,43 +56,43 @@ return {
 					["<C-e>"] = cmp.mapping.close(),
 					["jk"] = cmp.mapping.close(),
 					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Insert,
-						select = true,
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = false,
 					}),
 					["<C-y>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Insert,
+						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-j>"] = cmp.mapping.scroll_docs(4),
-					["<C-k>"] = cmp.mapping.scroll_docs(-4),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<C-j>"] = cmp.mapping.select_next_item(),
 					["<C-S-j>"] = cmp.mapping.scroll_docs(4),
 					["<C-S-k>"] = cmp.mapping.scroll_docs(-4),
 					["<Tab>"] = cmp.mapping(function()
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.jumpable(1) then
-							luasnip.expand_or_jump(1)
-						else
+					-- 	if cmp.visible() then
+					-- 		cmp.select_next_item()
+					-- 	elseif luasnip.jumpable(1) then
+					-- 		luasnip.expand_or_jump(1)
+					-- 	else
 							neotab.tabout()
-						end
+					-- 	end
 					end, {
 						"i",
 						"s",
 					}),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, {
-						"i",
-						"s",
-					}),
+					-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_prev_item()
+					-- 	elseif luasnip.jumpable(-1) then
+					-- 		luasnip.jump(-1)
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end, {
+					-- 	"i",
+					-- 	"s",
+					-- }),
 				},
 				sources = cmp.config.sources({
 					{ name = "calc" },

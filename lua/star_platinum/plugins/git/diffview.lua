@@ -629,5 +629,5 @@ return {
 		vim.keymap.set("n", "<leader>gD", ":DiffviewClose<CR>", { desc = "Close Diffview" })
 	end,
 
-	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ", { desc = "Open Diffview File History for Branch" }),
+	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ", { desc = "Open Diffview File History" }),
 }
