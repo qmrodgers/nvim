@@ -3,7 +3,8 @@ return {
 	dependencies = { "echasnovski/mini.icons", version = false },
 	config = function()
 		require("oil").setup({
-			columns = { "size", "birthtime", "mtime", "icon" },
+			-- columns = { "size", "birthtime", "mtime", "icon" },
+			columns = {"icon"},
 			keymaps = {
 				["<C-h>"] = false,
 				["<M-h>"] = "actions.select_split",

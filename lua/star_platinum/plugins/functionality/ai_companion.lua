@@ -127,6 +127,9 @@ local config = {
 				agent = { adapter = "copilot" },
 			},
 			display = {
+        -- action_palette = {
+        --   provider = "telescope",
+        -- },
 				chat = {
 					show_settings = true,
 					render_headers = false,

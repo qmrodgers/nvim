@@ -56,7 +56,7 @@ vim.keymap.set("n", "<leader>wa", "<cmd>wa<cr>", { noremap = true, desc = "Save 
 
 vim.keymap.set("n", "<leader>wz", "<cmd>qa<cr>", { noremap = true, desc = "Quit All Buffers" })
 
-vim.keymap.set("n", "<leader>wZ", "<cmd>qa!<cr>", { noremap = true, desc = "Quit All Buffers" })
+vim.keymap.set("n", "<leader>wZ", "<cmd>qa!<cr>", { noremap = true, desc = "Force Quit All Buffers" })
 
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save All Buffers" })
 
