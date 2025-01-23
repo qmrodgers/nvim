@@ -16,6 +16,8 @@ return {
 							["<C-j>"] = require("telescope.actions").move_selection_next,
 							["<C-p>"] = mapping.put("p"),
 							["<C-P>"] = mapping.put("P"),
+							["<CR>"] = mapping.put("p"),
+							["<C-CR>"] = mapping.put("P"),
 							["<c-x>"] = mapping.delete(),
 							["<c-r>"] = mapping.set_register(utils.get_default_register()),
 						},
