@@ -4,6 +4,7 @@ return {
 	config = function()
 		require("oil").setup({
 			-- columns = { "size", "birthtime", "mtime", "icon" },
+      delete_to_trash = false,
 			columns = {"icon"},
 			keymaps = {
 				["<C-h>"] = false,

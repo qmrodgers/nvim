@@ -40,11 +40,11 @@ local config = {
 								return string.format(
 									[[You are an expert at following the Conventional Commit specification. Given the provided unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
 
+                  Any time you suggest the chore gitmoji, please provide a brief explanation as to why, and provide an alternative
                   ```unicode gitmoji mappings:
                     ✨ feat:
                     🐛 fix:
                     📚 docs:
-                    💄 style:
                     ♻️ refactor:
                     ⚡ perf:
                     🚨 test:
@@ -85,12 +85,11 @@ local config = {
 								return string.format(
 									[[
                   You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following gitmoji mappings and diff:
-
+                  Any time you suggest the chore gitmoji, please provide a brief explanation as to why, and provide an alternative
                   ```unicode gitmoji mappings:
                     ✨ feat:
                     🐛 fix:
                     📚 docs:
-                    💄 style:
                     ♻️ refactor:
                     ⚡ perf:
                     🚨 test:
