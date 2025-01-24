@@ -1,9 +1,12 @@
 return {
-	"chrisgrieser/nvim-various-textobjs",
-	event = "VeryLazy",
-	opts = {
-		keymaps = {
-			useDefaults = true,
-		},
+  "chrisgrieser/nvim-various-textobjs",
+  event = "VeryLazy",
+  opts = {
+      keymaps = {
+        useDefaults = true,
+        disabledDefaults = {
+        "L"
+        }
+    },
 	},
 }
