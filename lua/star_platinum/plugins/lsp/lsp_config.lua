@@ -15,17 +15,9 @@ return {
 		local opts = { noremap = true, silent = true }
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
-			opts.desc = "Show LSP References"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
 			opts.desc = "Go to Declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-
-			opts.desc = "Show LSP Definitions"
-			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-
-			opts.desc = "Show LSP Type Definitions"
-			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 			opts.desc = "See Code Actions"
 			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)

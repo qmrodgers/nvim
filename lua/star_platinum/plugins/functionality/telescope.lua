@@ -9,6 +9,15 @@ return {
 		"nvim-telescope/telescope-symbols.nvim",
 	},
 	config = function()
+    local truncate_path = function(opts, path)
+        local parts = vim.split(path, '/')
+        local len = #parts
+        if len > 2 then
+          return table.concat(parts, '/', len - 2, len)
+        else
+          return path
+        end
+    end
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
@@ -121,6 +130,56 @@ return {
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("quicknote")
 		local keymap = vim.keymap
+
+    keymap.set("n", "<leader>gtb", function() builtin.git_branches{
+    } end, { desc = "View Git Branches" })
+
+    keymap.set("n", "<leader>gtf", function() builtin.git_bcommits{
+    } end, { desc = "View Git Commits for File" })
+
+    -- - `<cr>`: checks out the currently selected commit
+    -- - `<c-v>`: opens a diff in a vertical split
+    -- - `<c-x>`: opens a diff in a horizontal split
+    -- - `<c-t>`: opens a diff in a new tab
+
+    keymap.set("n", "<leader>gtc", function() builtin.git_commits{
+    } end, { desc = "View Git Commits for Branch" })
+
+    keymap.set("n", "<leader>glt",function() builtin.lsp_type_definitions{
+      winblend = 10,
+      path_display = truncate_path,
+      fname_width = 0.3,
+      layout_strategy = 'vertical'
+    } end, { desc = "Go to Type Definitions" })
+
+		keymap.set("n", "<leader>glr", function() builtin.lsp_references{
+      winblend = 10,
+      path_display = truncate_path,
+      fname_width = 0.3,
+      layout_strategy = 'vertical'
+    } end, { desc = "View LSP References" })
+
+			keymap.set("n", "<leader>gld", function() builtin.lsp_definitions{
+      winblend = 10,
+      path_display = truncate_path,
+      fname_width = 0.3,
+      layout_strategy = 'vertical'
+    } end, { desc = "Go to Definitions" })
+
+			keymap.set("n", "<leader>glt",function() builtin.lsp_type_definitions{
+      winblend = 10,
+      path_display = truncate_path,
+      fname_width = 0.3,
+      layout_strategy = 'vertical'
+    } end, { desc = "Go to Type Definitions" })
+
+		keymap.set("n", "<leader>glr", function() builtin.lsp_references{
+      winblend = 10,
+      path_display = truncate_path,
+      fname_width = 0.3,
+      layout_strategy = 'vertical'
+    } end, { desc = "View LSP References" })
+
 		keymap.set("n", "<leader>fr", ivy_theme(builtin.oldfiles), { desc = "Find Recently Opened Files" })
 		keymap.set("n", "<leader>fb", ivy_theme(builtin.buffers), { desc = "Find Open Buffers" })
 		keymap.set("n", "<leader>gf", ivy_theme(builtin.git_files), { desc = "Search Git Files" })
@@ -149,6 +208,10 @@ return {
 			dropdown_theme(builtin.current_buffer_fuzzy_find, {
 				winblend = 10,
 				previewer = false,
+        layout_config = {
+          width = 0.5,
+          height = 0.5,
+        },
 			}),
 			{ desc = "Fuzzy Search in Buffer" }
 		)
