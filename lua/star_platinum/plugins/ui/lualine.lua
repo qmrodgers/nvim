@@ -34,12 +34,16 @@ end
 
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { 
+    "nvim-tree/nvim-web-devicons",
+    -- "EdenEast/nightfox.nvim"
+  },
 	config = function()
+    -- vim.cmd("colorscheme nightfox")
 		require("lualine").setup({
-			options = {
-				theme = "auto",
-			},
+			-- options = {
+			-- 	-- theme = "auto",
+			-- },
 			sections = {
 				lualine_a = { getVimMode, "mode" },
 				lualine_c = { getCWDName, "filename" },

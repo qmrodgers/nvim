@@ -28,9 +28,6 @@ return {
 			opts.desc = "See Code Actions"
 			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
-			opts.desc = "Show Buffer Diagnostics"
-			keymap.set("n", "<leader>fD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
 			opts.desc = "Show Line Diagnostics"
 			keymap.set("n", "<leader>od", vim.diagnostic.open_float, opts)
 

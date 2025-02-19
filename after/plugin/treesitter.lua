@@ -8,6 +8,7 @@ require("nvim-treesitter.configs").setup({
 		"luadoc",
 		"markdown",
 		"markdown_inline",
+    "git_rebase",
 		"query",
 		"vim",
 		"vimdoc",
