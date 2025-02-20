@@ -110,17 +110,76 @@ return {
 		)
 
 		-- SEARCH NOTES
-		vim.keymap.set("n", "<leader>ng", function()
-			Get_Quicknote_Picker("Global")
-		end, { desc = "Telescope Notes (Global)" })
+		-- vim.keymap.set("n", "<leader>ng", function()
+		-- 	Get_Quicknote_Picker("Global")
+		-- end, { desc = "Telescope Notes (Global)" })
+		--
+		-- vim.keymap.set("n", "<leader>nb", function()
+		-- 	Get_Quicknote_Picker("CurrentBuffer")
+		-- end, { desc = "Telescope Notes (CurrentBuffer)" })
+		--
+		-- vim.keymap.set("n", "<leader>nc", function()
+		-- 	Get_Quicknote_Picker("CWD")
+		-- end, { desc = "Telescope Notes (CWD)" })
+		--
 
-		vim.keymap.set("n", "<leader>nb", function()
-			Get_Quicknote_Picker("CurrentBuffer")
-		end, { desc = "Telescope Notes (CurrentBuffer)" })
+		local get_snacks_picker = function(quicknote_result, source)
+			local snacks_picker = require("snacks.picker")
+			source = source or "Quicknotes"
+			local items = {}
+			for _, v in ipairs(quicknote_result) do
+				table.insert(items, { text = v[1], file = v[2] })
+			end
+			snacks_picker.pick({
+				source = source,
+				items = items,
+				format = "text",
+			})
+		end
 
-		vim.keymap.set("n", "<leader>nc", function()
-			Get_Quicknote_Picker("CWD")
-		end, { desc = "Telescope Notes (CWD)" })
+		local wk = require("which-key")
+
+		wk.add({
+      { "<leader>fn", group = "Quicknote Pickers" },
+			{
+				"<leader>fng",
+				function()
+					get_snacks_picker(require("quicknote").RetrieveNotesForGlobal())
+				end,
+				desc = "Global Notes",
+				icon = "󱥰",
+				mode = "n",
+			},
+			{
+				"<leader>fnb",
+				function()
+					get_snacks_picker(require("quicknote").RetrieveNotesForCurrentBuffer())
+				end,
+				desc = "Buffer Notes",
+				icon = "󱥰",
+				mode = "n",
+			},
+			{
+				"<leader>fnc",
+				function()
+					get_snacks_picker(require("quicknote").RetrieveNotesForCWD())
+				end,
+				desc = "CWD Notes",
+				icon = "󱥰",
+				mode = "n",
+			},
+		})
+		-- vim.keymap.set("n", "<leader>ng", function()
+		--       get_snacks_picker(require("quicknote").RetrieveNotesForGlobal())
+		-- end, { desc = "󱥰 Global Notes" })
+		--
+		-- vim.keymap.set("n", "<leader>nb", function()
+		--       get_snacks_picker(require("quicknote").RetrieveNotesForCurrentBuffer())
+		-- end, { desc = "󱥰 Buffer Notes" })
+		--
+		-- vim.keymap.set("n", "<leader>nc", function()
+		--       get_snacks_picker(require("quicknote").RetrieveNotesForCWD())
+		-- end, { desc = "󱥰 CWD Notes" })
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 			callback = function(ev)
