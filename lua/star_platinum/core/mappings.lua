@@ -16,9 +16,9 @@ vim.keymap.set(
 
 -- vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
-vim.keymap.set("n", "<leader>sv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
 
-vim.keymap.set("n", "<leader>ss", "<C-w>s", { noremap = true, desc = "Split Window Horizontally" })
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, desc = "Split Window Horizontally" })
 
 vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize Window Sizes" })
 
