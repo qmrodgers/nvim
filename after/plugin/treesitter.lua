@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"cpp",
 		"json",
+    "jsonc",
 		"typescript",
 		"tsx",
 		"yaml",

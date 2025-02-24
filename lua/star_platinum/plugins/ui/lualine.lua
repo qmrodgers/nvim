@@ -46,7 +46,7 @@ return {
 			-- },
 			sections = {
 				lualine_a = { getVimMode, "mode" },
-				lualine_c = { getCWDName, "filename" },
+				lualine_c = { getCWDName, "filename"},
 				lualine_x = { getDiffStatus },
 			},
 		})

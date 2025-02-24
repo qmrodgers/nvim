@@ -141,6 +141,17 @@ return {
     "EdenEast/nightfox.nvim",
     priority = 1000,
     config = function()
+      require("nightfox").setup({
+        groups = {
+          nightfox = {
+            DiffAdd = { bg = "#264c3c"},
+            DiffChange = { bg = "#3b4c3c"},
+            DiffText = { bg = "#655e3c"},
+            DiffDelete = { bg = "#4b2837"},
+            DiffviewDiffAddAsDelete = { bg = "#4b2837"},
+          }
+        }
+      })
       vim.cmd("colorscheme nightfox")
     end
   } -- lazy

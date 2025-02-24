@@ -8,7 +8,22 @@ return {
 		"SmiteshP/nvim-navic",
 		"nvim-tree/nvim-web-devicons", -- optional dependency
 	},
-	opts = {
-		-- configurations go here
-	},
+  config = function()
+    require("barbecue").setup({})
+      vim.api.nvim_create_autocmd("User", {
+        desc = "Hide barbecue when entering DiffView",
+        pattern = "DiffviewViewEnter",
+        callback = function()
+          require("barbecue.ui").toggle(false)
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("User", {
+        desc = "Show barbecue when leaving DiffView",
+        pattern = "DiffviewViewLeave",
+        callback = function()
+          require("barbecue.ui").toggle(true)
+        end,
+      })
+  end,
 }

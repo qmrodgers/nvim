@@ -21,7 +21,7 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.updatetime = 300
 vim.o.signcolumn = "yes:3"
 vim.o.number = true
@@ -37,7 +37,7 @@ vim.opt.showmode = false
 -- 	end,
 -- })
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 vim.opt.isfname:append("@-@")
 if vim.fn.has("win32") == 1 then
 	vim.go.shell = "bash"
