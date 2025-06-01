@@ -11,9 +11,9 @@ return {
 		require("neotest").setup({
 			adapters = {
 				require("neotest-python")({
-					runner = "unittest",
+					runner = "pytest",
 					python = "python",
-					dap = { justmycode = false },
+					dap = { justmycode = true },
 				}),
 			},
 		})

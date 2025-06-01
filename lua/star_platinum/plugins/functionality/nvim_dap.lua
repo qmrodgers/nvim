@@ -5,6 +5,24 @@ return {
         local dap = require("dap")
         local dap_ui = require("dapui")
         local dap_vt = require("nvim-dap-virtual-text")
+        local dap_python = require("dap-python")
+
+        -- ╭──────────────────────────────────────────────────────────╮
+        -- │ DAP Python Integration Setup                             │
+        -- ╰──────────────────────────────────────────────────────────╯
+        local debugpyspec = "python"
+        if vim.fn.has('win32') == 1 then
+          debugpyspec = os.getenv("PYTHON_ENV_PATH") or "python"
+        end
+        dap_python.setup(debugpyspec)
+        table.insert(dap.configurations.python, {
+          justMyCode = false,
+          request = 'launch',
+          name = 'custom config',
+          program = '${file}',
+          type = 'python',
+        })
+
 
         -- ╭──────────────────────────────────────────────────────────╮
         -- │ DAP Virtual Text Setup                                   │
@@ -161,14 +179,9 @@ return {
       "rcarriga/nvim-dap-ui",
       {
         "mfussenegger/nvim-dap-python",
-        config = function()
-          local debugpyspec = "python"
-          if vim.fn.has("win32") == 1 then
-            -- Specific windows configuration, may need changed later
-            debugpyspec = "python"
-          end
-          require("dap-python").setup(debugpyspec)
-        end,
+        dependencies = {
+          "mfussenegger/nvim-dap"
+        }
       }
 		},
 	},

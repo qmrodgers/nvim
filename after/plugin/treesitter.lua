@@ -40,7 +40,7 @@ require("nvim-treesitter.configs").setup({
 			init_selection = "<C-Space>",
 			node_incremental = "v",
 			scope_incremental = false,
-			node_decremental = "V",
+			node_decremental = "<C-v>",
 		},
 	},
 	indent = { enable = true, disable = { "ruby" } },

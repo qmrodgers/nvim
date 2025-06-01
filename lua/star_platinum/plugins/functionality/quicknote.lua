@@ -63,51 +63,51 @@ return {
 		end
 
 		-- NEW NOTE
-		vim.keymap.set("n", "gng", ":lua require('quicknote').NewNoteAtGlobal()<cr>", { desc = "New Note (Global)" })
+		vim.keymap.set("n", "<leader>nqg", ":lua require('quicknote').NewNoteAtGlobal()<cr>", { desc = "New Note (Global)" })
 		vim.keymap.set(
 			"n",
-			"gnl",
+			"<leader>nql",
 			":lua require('quicknote').NewNoteAtCurrentLine()<cr>",
 			{ desc = "New Note (Current Line)" }
 		)
-		vim.keymap.set("n", "gnc", ":lua require('quicknote').NewNoteAtCWD()<cr>", { desc = "New Note (CWD)" })
-
-		-- DELETE NOTE
-		vim.keymap.set(
-			"n",
-			"gndg",
-			":lua require('quicknote').DeleteNoteAtGlobal()<cr>",
-			{ desc = "Delete Note (Global)" }
-		)
-		vim.keymap.set(
-			"n",
-			"gndl",
-			":lua require('quicknote').DeleteNoteAtCurrentLine()<cr>",
-			{ desc = "Delete Note (Current Line)" }
-		)
-		vim.keymap.set("n", "gndc", ":lua require('quicknote').DeleteNoteAtCWD()<cr>", { desc = "Delete Note (CWD)" })
-
-		-- JUMP TO NOTES
-		vim.keymap.set(
-			"n",
-			"gN",
-			":lua require('quicknote').OpenNoteAtCurrentLine()<cr>",
-			{ desc = "Open Note at Current Line" }
-		)
-
-		vim.keymap.set(
-			"n",
-			"<leader>nn",
-			":lua require('quicknote').JumpToNextNote()<cr>",
-			{ desc = "Jump to Next Note" }
-		)
-
-		vim.keymap.set(
-			"n",
-			"<leader>np",
-			":lua require('quicknote').JumpToPreviousNote()<cr>",
-			{ desc = "Jump to Previous Note" }
-		)
+		vim.keymap.set("n", "<leader>nqc", ":lua require('quicknote').NewNoteAtCWD()<cr>", { desc = "New Note (CWD)" })
+		--
+		-- -- DELETE NOTE
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"gndg",
+		-- 	":lua require('quicknote').DeleteNoteAtGlobal()<cr>",
+		-- 	{ desc = "Delete Note (Global)" }
+		-- )
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"gndl",
+		-- 	":lua require('quicknote').DeleteNoteAtCurrentLine()<cr>",
+		-- 	{ desc = "Delete Note (Current Line)" }
+		-- )
+		-- vim.keymap.set("n", "gndc", ":lua require('quicknote').DeleteNoteAtCWD()<cr>", { desc = "Delete Note (CWD)" })
+		--
+		-- -- JUMP TO NOTES
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"gN",
+		-- 	":lua require('quicknote').OpenNoteAtCurrentLine()<cr>",
+		-- 	{ desc = "Open Note at Current Line" }
+		-- )
+		--
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"<leader>nn",
+		-- 	":lua require('quicknote').JumpToNextNote()<cr>",
+		-- 	{ desc = "Jump to Next Note" }
+		-- )
+		--
+		-- vim.keymap.set(
+		-- 	"n",
+		-- 	"<leader>np",
+		-- 	":lua require('quicknote').JumpToPreviousNote()<cr>",
+		-- 	{ desc = "Jump to Previous Note" }
+		-- )
 
 		-- SEARCH NOTES
 		-- vim.keymap.set("n", "<leader>ng", function()
@@ -181,10 +181,10 @@ return {
 		--       get_snacks_picker(require("quicknote").RetrieveNotesForCWD())
 		-- end, { desc = "󱥰 CWD Notes" })
 
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-			callback = function(ev)
-				require("quicknote").ShowNoteSigns()
-			end,
-		})
+		-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+		-- 	callback = function(ev)
+		-- 		require("quicknote").ShowNoteSigns()
+		-- 	end,
+		-- })
 	end,
 }

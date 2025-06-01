@@ -23,9 +23,9 @@ vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.cursorline = false
 vim.opt.updatetime = 300
-vim.o.signcolumn = "yes:3"
+vim.o.signcolumn = "yes"
 vim.o.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 vim.o.statuscolumn = "%s%l %r %C"
 vim.opt.showmode = false
 -- handled by yanky.nvim
@@ -37,15 +37,15 @@ vim.opt.showmode = false
 -- 	end,
 -- })
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
-if vim.fn.has("win32") == 1 then
-	vim.go.shell = "bash"
-	vim.go.shellcmdflag = "-c"
-	vim.go.shellxquote = ""
-else
-	vim.g.shell = "zsh"
-end
+-- if vim.fn.has("win32") == 1 then
+-- 	vim.go.shell = "bash"
+-- 	vim.go.shellcmdflag = "-c"
+-- 	vim.go.shellxquote = ""
+-- else
+-- 	vim.g.shell = "zsh"
+-- end
 vim.api.nvim_create_user_command("FormatPythonJson", function()
 	vim.cmd("%s/'/\"/g")
 	vim.cmd("%s/True/true/gi")

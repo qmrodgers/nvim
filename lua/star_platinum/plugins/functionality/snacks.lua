@@ -13,10 +13,10 @@ return {
     -- { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
     { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config"), hidden = true, ignored = true }) end, desc = "Find Config File" },
+    { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config"), hidden = true, ignored = true, jump = { reuse_win = true } }) end, desc = "Find Config File" },
     { "<leader>fC", function() Snacks.picker.lazy() end, desc = "Find Plugin Spec" },
-    { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.git_files({ hidden = true, ignored = true }) end, desc = "Find Git Files" },
+    { "<leader>ff", function() Snacks.picker.files({ hidden = true, jump = { reuse_win = true } }) end, desc = "Find Files" },
+    { "<leader>fg", function() Snacks.picker.git_files({ hidden = true, ignored = true, jump = { reuse_win = true } }) end, desc = "Find Git Files" },
     { "<leader>fP", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     -- { "<Tab>", function() Snacks.picker.util.pick_win() end, desc = "Window Picker" },
@@ -31,7 +31,7 @@ return {
     -- -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-    { "<leader>sg", function() Snacks.picker.grep({ hidden = true }) end, desc = "Grep" },
+    { "<leader>sg", function() Snacks.picker.grep({ hidden = true, jump = { reuse_win = true } }) end, desc = "Grep" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
     -- -- search
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
@@ -68,10 +68,35 @@ return {
     -- refer to the configuration section below
     -- bigfile = { enabled = true },
     -- dashboard = { enabled = true },
-    -- explorer = { enabled = true },
+    explorer = {
+      enabled = true,
+      replace_netrw = true,
+    },
     -- indent = { enabled = true },
     -- input = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      focus = "list",
+      jump = {
+        reuse_win = true,
+      },
+      sources = {
+        explorer = {
+          win = {
+            input = {
+              keys = {
+                ["<C-j>"] = false
+              }
+            },
+            list = {
+              keys = {
+                ["<C-j>"] = false
+              }
+            }
+          }
+        }
+      }
+    },
     -- notifier = { enabled = true },
     -- quickfile = { enabled = true },
     -- scope = { enabled = true },

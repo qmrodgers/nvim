@@ -2,27 +2,23 @@
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 
 -- Remap Control+Movement to operate normally in insert mode
-vim.keymap.set({ "n", "i" }, "<C-j>", "<Down>", { noremap = true })
-vim.keymap.set({ "n", "i" }, "<C-k>", "<Up>", { noremap = true })
-vim.keymap.set({ "n", "i" }, "<C-h>", "<Left>", { noremap = true })
-vim.keymap.set({ "n", "i" }, "<C-l>", "<Right>", { noremap = true })
+-- vim.keymap.set({ "n", "i" }, "<C-j>", "<Down>", { noremap = true })
+-- vim.keymap.set({ "n", "i" }, "<C-k>", "<Up>", { noremap = true })
+-- vim.keymap.set({ "n", "i" }, "<C-h>", "<Left>", { noremap = true })
+-- vim.keymap.set({ "n", "i" }, "<C-l>", "<Right>", { noremap = true })
 
 vim.keymap.set(
 	"n",
-	"<leader>bd",
+	"<leader>gb",
 	"<cmd>%bd|e#|bd#<CR>",
 	{ noremap = true, desc = "(D)elete (A)ll (B)uffers - Except Current" }
 )
 
 -- vim.keymap.set("n", "gj", "<C-w>w", { noremap = true, desc = "Jump to Next Window" })
 
-vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, desc = "Split Window Vertically" })
-
-vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, desc = "Split Window Horizontally" })
+vim.keymap.set("n", "<leader>w", "<C-w>", { noremap = true, desc = "Window Commands" })
 
 vim.keymap.set("n", "<leader>sr", "<C-w>=", { noremap = true, desc = "Equalize Window Sizes" })
-
-vim.keymap.set("n", "<c-s-k>", "<C-w>q", { noremap = true, desc = "Kill Window" })
 
 vim.keymap.set("i", "<C-v>", "<C-V>", { noremap = true, desc = "Paste" })
 
@@ -42,25 +38,9 @@ vim.keymap.set("i", "<C-v>", "<C-V>", { noremap = true, desc = "Paste" })
 --
 -- vim.keymap.set("n", "<A-L>", "<C-w>L", { noremap = true })
 
-vim.keymap.set("n", "<leader>wI", "5<C-w>+", { noremap = true, desc = "Increase Window Height" })
-
-vim.keymap.set("n", "<leader>wD", "5<C-w>-", { noremap = true, desc = "Decrease Window Height" })
-
-vim.keymap.set("n", "<leader>wi", "20<C-w>>", { noremap = true, desc = "Increase Window Width" })
-
-vim.keymap.set("n", "<leader>wd", "20<C-w><", { noremap = true, desc = "Decrease Window Width" })
-
-vim.keymap.set("n", "<leader>ww", "<cmd>w<cr>", { noremap = true, desc = "Save Buffer" })
-
-vim.keymap.set("n", "<leader>wa", "<cmd>wa<cr>", { noremap = true, desc = "Save All Buffers" })
-
-vim.keymap.set("n", "<leader>wz", "<cmd>qa<cr>", { noremap = true, desc = "Quit All Buffers" })
-
-vim.keymap.set("n", "<leader>wZ", "<cmd>qa!<cr>", { noremap = true, desc = "Force Quit All Buffers" })
-
-vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save All Buffers" })
-
-vim.keymap.set("n", "<leader>wQ", "<cmd>wqa<cr>", { noremap = true, desc = "Save and Quit All Buffers" })
+-- vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true, desc = "Save All Buffers" })
+--
+-- vim.keymap.set("n", "<leader>wQ", "<cmd>wqa<cr>", { noremap = true, desc = "Save and Quit All Buffers" })
 
 vim.keymap.set("n", "gB", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
 
@@ -146,7 +126,8 @@ vim.keymap.set("i", "<A-a>", "<ESC>A")
 vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<cr>")
 
 vim.keymap.set("n", "x", "_x")
-vim.keymap.set("n", "<leader>bD", "<cmd>bdelete!<cr>", { desc = "Delete current buffer without saving" })
+vim.keymap.set("n", "<leader>bD", "<cmd>bd!<cr>", { desc = "Delete current buffer without saving" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete current buffer" })
 
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Source current file" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")

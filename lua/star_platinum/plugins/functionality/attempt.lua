@@ -3,7 +3,20 @@ return {
 	config = function()
     local attempt = require("attempt")
 		attempt.setup({
+      list_buffers = true,
       ext_options = { 'lua', 'js', 'json', 'py', 'cpp', 'c', '' },  -- Options to choose from
+      initial_content = {
+        py = function()
+          return [[
+#!/usr/bin/env python
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
+          ]]
+        end
+      }
     })
 
 		local wk = require("which-key")

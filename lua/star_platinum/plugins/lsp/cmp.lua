@@ -10,6 +10,7 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
+      "Dynge/gitmoji.nvim",
 			{
 				"kawre/neotab.nvim",
 				event = "InsertEnter",
@@ -30,6 +31,14 @@ return {
 			local cmp_nvim_lua = require("cmp_nvim_lua")
 			local cmp_vsnip = require("cmp_vsnip")
 			local neotab = require("neotab")
+
+      require("gitmoji").setup({
+        filetypes = { "gitcommit", "markdown" },
+        completion = {
+          append_space = false,
+          complete_as = "emoji",
+        },
+      })
 
 			local has_words_before = function()
 				unpack = unpack or table.unpack
@@ -102,6 +111,7 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "luasnip" },
 					{ name = "vsnip" },
+					{ name = "gitmoji" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
@@ -119,27 +129,5 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		"Dynge/gitmoji.nvim",
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
-		config = function()
-			require("gitmoji").setup({
-				filetypes = { "gitcommit" },
-				completion = {
-					append_space = false,
-					complete_as = "emoji",
-				},
-			})
-
-			require("cmp").setup.buffer({
-				sources = {
-					{ name = "gitmoji" },
-				},
-			})
-		end,
-		ft = { "gitcommit", "COMMIT_EDITMSG" },
 	},
 }

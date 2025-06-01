@@ -5,10 +5,10 @@ return {
 	config = function()
 		vim.keymap.set(
 			"n",
-			"<leader>jq",
+			"<leader>Jq",
 			"<cmd>JqxList<cr>",
 			{ noremap = true, silent = true, desc = "Add JSON to Quickfix" }
 		)
-		vim.keymap.set("n", "<leader>jQ", ":JqxQuery ", { noremap = true, silent = true, desc = "Query Json Data" })
+		vim.keymap.set("n", "<leader>JQ", ":JqxQuery ", { noremap = true, silent = true, desc = "Query Json Data" })
 	end,
 }

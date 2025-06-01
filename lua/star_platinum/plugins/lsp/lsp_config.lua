@@ -13,6 +13,52 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap
 		local opts = { noremap = true, silent = true }
+    vim.lsp.config("basedpyright", {
+      root_markers = { "pyproject.toml", ".git" },
+      settings = {
+        basedpyright = {
+          analysis = {
+            typeCheckingMode = "standard",
+            -- autoImportCompletions = true
+            -- autoSearchPaths = true
+            -- useLibraryCodeForTypes = true
+          }
+        }
+      }
+    })
+    vim.lsp.enable("basedpyright")
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+          },
+        }
+      }
+    })
+    vim.lsp.enable("lua_ls")
+    vim.lsp.enable("html")
+    vim.lsp.enable("jsonls")
+    vim.lsp.enable("cssls")
+    vim.lsp.config("svelte", {
+      filetypes = { "svelte" },
+    })
+    vim.lsp.enable("svelte")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("emmet_ls")
+    vim.lsp.enable("jdtls")
+    vim.lsp.enable("rust_analyzer")
+    vim.lsp.config("terraformls", {
+      filetypes = { "hcl", "tf", "tfvars", "terraform", "terraform-vars" }
+    })
+    vim.lsp.enable("terraformls")
+
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
@@ -43,102 +89,45 @@ return {
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 		end
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      callback = on_attach
+    })
+
 		local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
+    vim.g.have_nerd_font = true
+    vim.diagnostic.config({
+        severity_sort = true,
+        float = {
+            border = "rounded",
+            source = "if_many",
+        },
+        underline = {
+            severity = vim.diagnostic.severity.ERROR
+        },
+        signs = vim.g.have_nerd_font and {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+            [vim.diagnostic.severity.WARN] = '󰀪 ',
+            [vim.diagnostic.severity.INFO] = '󰋼 ',
+            [vim.diagnostic.severity.HINT] = '󰌵 ',
+          },
+        } or {},
+        virtual_text = {
+            source = "if_many",
+            spacing = 2,
+            format = function(diagnostic)
+                local diagnostic_message = {
+                    [vim.diagnostic.severity.ERROR] = diagnostic.message,
+                    [vim.diagnostic.severity.WARN] = diagnostic.message,
+                    [vim.diagnostic.severity.INFO] = diagnostic.message,
+                    [vim.diagnostic.severity.HINT] = diagnostic.message
+                }
+                return diagnostic_message[diagnostic.severity]
+            end
+          },
+    })
 
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-		local inlay_hints = { enabled = true }
-
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["jsonls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["svelte"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-			filetypes = { "svelte" },
-		})
-
-		lspconfig["ts_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["emmet_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["pyright"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["rust_analyzer"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "rust", "rs" },
-			inlay_hints = inlay_hints,
-		})
-
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-				},
-			},
-		})
-
-		lspconfig["jsonls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			inlay_hints = inlay_hints,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-				},
-			},
-		})
-	end,
+  end
 }

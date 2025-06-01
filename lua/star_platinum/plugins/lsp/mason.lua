@@ -26,9 +26,10 @@ return {
 				"svelte",
 				"lua_ls",
 				"graphql",
-				"pyright",
+        "basedpyright",
 				"jsonls",
 				"ts_ls",
+        "terraformls"
 			},
 			automatic_installation = true,
 		})
@@ -38,6 +39,7 @@ return {
 				"prettier",
 				"isort",
 				"eslint_d",
+        "black"
 			},
 		})
 	end,

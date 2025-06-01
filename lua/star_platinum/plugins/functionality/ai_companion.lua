@@ -38,21 +38,13 @@ local config = {
 							content = function()
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
-									[[You are an expert at following the Conventional Commit specification. Given the provided unicode gitmoji mappings, and git diff listed below, please generate a commit message for me:
+									[[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a descriptive commit message for me, using unicode gitmoji for the type:
 
-                  Any time you suggest the chore gitmoji, please provide a brief explanation as to why, and provide an alternative
-                  ```unicode gitmoji mappings:
-                    ✨ feat:
-                    🐛 fix:
-                    📚 docs:
-                    ♻️ refactor:
-                    ⚡ perf:
-                    🚨 test:
-                    🏗️ build:
-                    🚀 ci:
-                    🔧 chore:
-                    ⏪ revert:
+                  ```format
+                  <gitmoji>(<scope>): <description>
                   ```
+                  Note: <scope> is optional
+                  Feel free to use multiple lines if necessary
 
                   ```diff
                   %s
@@ -83,26 +75,17 @@ local config = {
 							content = function()
 								local git_diff = vim.fn.system("git diff --no-ext-diff --staged")
 								return string.format(
-									[[
-                  You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a one-liner git message for me, using the following gitmoji mappings and diff:
-                  Any time you suggest the chore gitmoji, please provide a brief explanation as to why, and provide an alternative
-                  ```unicode gitmoji mappings:
-                    ✨ feat:
-                    🐛 fix:
-                    📚 docs:
-                    ♻️ refactor:
-                    ⚡ perf:
-                    🚨 test:
-                    🏗️ build:
-                    🚀 ci:
-                    🔧 chore:
-                    ⏪ revert:
+									[[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a single-line commit message for me, using unicode gitmoji for the type:
+
+                  ```format
+                  <gitmoji>(<scope>): <description>
                   ```
+                  Note: <scope> is optional
 
                   ```diff
                   %s
                   ```
-                  ]],
+                ]],
 									git_diff
 								)
 							end,
@@ -126,9 +109,9 @@ local config = {
 				agent = { adapter = "copilot" },
 			},
 			display = {
-        -- action_palette = {
-        --   provider = "telescope",
-        -- },
+        action_palette = {
+          provider = "snacks",
+        },
 				chat = {
 					show_settings = true,
 					render_headers = false,

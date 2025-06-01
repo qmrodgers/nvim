@@ -627,6 +627,16 @@ return {
 
 		vim.keymap.set("n", "<leader>gd", ":DiffviewOpen ", { desc = "Open Diffview" })
 		vim.keymap.set("n", "<leader>gD", ":tabclose<CR>", { desc = "Close Diffview" })
+    vim.opt.diffopt = {
+      "internal",
+      "filler",
+      "closeoff",
+      "context:12",
+      "algorithm:histogram",
+      "linematch:200",
+      "indent-heuristic",
+      -- "iwhite"
+    }
 	end,
 
 	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ", { desc = "Open Diffview File History" }),
