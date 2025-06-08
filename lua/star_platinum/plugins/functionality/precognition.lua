@@ -1,0 +1,35 @@
+return {
+    "tris203/precognition.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "chrisgrieser/nvim-spider",
+    },
+    config = function()
+      local vanilla_motions = require("precognition.motions.vanilla_motions")
+      local spider = require("spider.motion-logic")
+      local globalOpts = require("spider.config").globalOpts
+
+      require("precognition.motions").register_motions({
+        next_word_boundary = function(str, cursorcol, linelen, big_word)
+          if big_word then
+            return vanilla_motions.next_word_boundary(str, cursorcol, linelen, big_word)
+          end
+          return spider.getNextPosition(str, cursorcol, "w", globalOpts) or 0
+        end,
+        end_of_word = function(str, cursorcol, linelen, big_word)
+          if big_word then
+            return vanilla_motions.end_of_word(str, cursorcol, linelen, big_word)
+          end
+          return spider.getNextPosition(str, cursorcol, "e", globalOpts) or 0
+        end,
+        prev_word_boundary = function(str, cursorcol, linelen, big_word)
+          if big_word then
+            return vanilla_motions.prev_word_boundary(str, cursorcol, linelen, big_word)
+          end
+          return spider.getNextPosition(str, cursorcol, "b", globalOpts) or 0
+        end,
+      })
+      require('precognition').setup({})
+    end,
+
+}
