@@ -1,5 +1,5 @@
 return {
-	"qmrodgers/quicknote.nvim",
+	"RutaTang/quicknote.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("quicknote").setup({

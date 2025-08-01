@@ -13,7 +13,8 @@ return {
 				require("neotest-python")({
 					runner = "pytest",
 					python = "python",
-					dap = { justmycode = true },
+					dap = { justMyCode = true },
+          args = {"--log-level", "DEBUG"},
 				}),
 			},
 		})
