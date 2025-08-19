@@ -109,9 +109,9 @@ local config = {
 				agent = { adapter = "copilot" },
 			},
 			display = {
-        action_palette = {
-          provider = "snacks",
-        },
+        -- action_palette = {
+        --   provider = "snacks.nvim",
+        -- },
 				chat = {
 					show_settings = true,
 					render_headers = false,
