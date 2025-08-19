@@ -56,8 +56,8 @@ require("nvim-treesitter.configs").setup({
 				-- ["]z"] = { query = "@fold", desc = "Next Fold (Start)" },
 				-- ["]b"] = { query = "@block.outer", desc = "Next Block (Start)" },
 				-- ["]a"] = { query = "@parameter.inner", desc = "Next Parameter (Start)" },
-				["]m"] = { query = "@function.outer", desc = "Next Function (Start)" },
-				["]]"] = { query = "@class.outer", desc = "Next Class (Start)" },
+				["]]"] = { query = "@function.outer", desc = "Next Function (Start)" },
+				["]c"] = { query = "@class.outer", desc = "Next Class (Start)" },
 			},
 			goto_next_end = {
 				-- ["]F"] = { query = "@call.outer", desc = "Next Function Call (End)" },
@@ -67,8 +67,8 @@ require("nvim-treesitter.configs").setup({
 				-- ["]Z"] = { query = "@fold", desc = "Next Fold (End)" },
 				-- ["]B"] = { query = "@block.outer", desc = "Next Block (End)" },
 				-- ["]A"] = { query = "@parameter.inner", desc = "Next Parameter (End)" },
-				["]M"] = { query = "@function.outer", desc = "Next Function (End)" },
-				["]["] = { query = "@class.outer", desc = "Next Class (End)" },
+				["]["] = { query = "@function.outer", desc = "Next Function (End)" },
+				["]C"] = { query = "@class.outer", desc = "Next Class (End)" },
 			},
 			goto_previous_start = {
 				-- ["[f"] = { query = "@call.outer", desc = "Previous Function Call (Start)" },
@@ -78,8 +78,8 @@ require("nvim-treesitter.configs").setup({
 				-- ["[z"] = { query = "@fold", desc = "Previous Fold (Start)" },
 				-- ["[b"] = { query = "@block.outer", desc = "Previous Block (Start)" },
 				-- ["[a"] = { query = "@parameter.inner", desc = "Previous Parameter (Start)" },
-				["[m"] = { query = "@function.outer", desc = "Previous Function (Start)" },
-				["[["] = { query = "@class.outer", desc = "Previous Class (Start)" },
+				["[["] = { query = "@function.outer", desc = "Previous Function (Start)" },
+				["[c"] = { query = "@class.outer", desc = "Previous Class (Start)" },
 			},
 			goto_previous_end = {
 				-- ["[F"] = { query = "@call.outer", desc = "Previous Function Call (End)" },
@@ -89,8 +89,8 @@ require("nvim-treesitter.configs").setup({
 				-- ["[Z"] = { query = "@fold", desc = "Previous Fold (End)" },
 				-- ["[B"] = { query = "@block.outer", desc = "Previous Block (End)" },
 				-- ["[A"] = { query = "@parameter.inner", desc = "Previous Parameter (End)" },
-				["[M"] = { query = "@function.outer", desc = "Previous Function (End)" },
-				["[]"] = { query = "@plass.outer", desc = "Previous Class (End)" },
+				["[]"] = { query = "@function.outer", desc = "Previous Function (End)" },
+				["[C"] = { query = "@plass.outer", desc = "Previous Class (End)" },
 			},
 		},
 		-- select = {
