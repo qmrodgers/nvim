@@ -28,7 +28,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.opt.showmode = false
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
-vim.o.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#@type#%{&rnu?" ".v:relnum:""} '
+vim.o.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
 vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
 -- if vim.fn.has("win32") == 1 then
