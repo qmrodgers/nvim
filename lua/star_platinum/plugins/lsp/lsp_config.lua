@@ -78,10 +78,54 @@ return {
 			keymap.set("n", "<leader>od", vim.diagnostic.open_float, opts)
 
 			opts.desc = "Go To Previous Diagnostic"
-			keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+			keymap.set("n", "[d", function()
+        vim.diagnostic.jump({ count = -1, float = true })
+      end, opts)
 
 			opts.desc = "Go To Next Diagnostic"
-			keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+			keymap.set("n", "]d", function()
+        vim.diagnostic.jump({ count = 1, float = true })
+      end, opts)
+
+			opts.desc = "Go To Previous Error"
+			keymap.set("n", "[e", function()
+        vim.diagnostic.jump({ count = -1, severity = { vim.diagnostic.severity.ERROR }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Next Error"
+			keymap.set("n", "]e", function()
+        vim.diagnostic.jump({ count = 1, severity = { vim.diagnostic.severity.ERROR }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Previous Warning"
+			keymap.set("n", "[w", function()
+        vim.diagnostic.jump({ count = -1, severity = { vim.diagnostic.severity.WARN }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Next Warning"
+			keymap.set("n", "]w", function()
+        vim.diagnostic.jump({ count = 1, severity = { vim.diagnostic.severity.WARN }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Previous Info Diagnostic"
+			keymap.set("n", "[i", function()
+        vim.diagnostic.jump({ count = -1, severity = { vim.diagnostic.severity.INFO }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Next Info Diagnostic"
+			keymap.set("n", "]i", function()
+        vim.diagnostic.jump({ count = 1, severity = { vim.diagnostic.severity.INFO }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Previous Hint"
+			keymap.set("n", "[h", function()
+        vim.diagnostic.jump({ count = -1, severity = { vim.diagnostic.severity.HINT }, float = true })
+      end, opts)
+
+			opts.desc = "Go To Next Hint"
+			keymap.set("n", "]h", function()
+        vim.diagnostic.jump({ count = 1, severity = { vim.diagnostic.severity.HINT }, float = true })
+      end, opts)
 
 			opts.desc = "Hover Definition"
 			keymap.set("n", "gh", vim.lsp.buf.hover, opts)

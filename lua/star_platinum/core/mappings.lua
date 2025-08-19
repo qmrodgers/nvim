@@ -44,48 +44,6 @@ vim.keymap.set("i", "<C-v>", "<C-V>", { noremap = true, desc = "Paste" })
 
 vim.keymap.set("n", "gB", "<cmd>%bd|e#|bd#<CR>", { noremap = true, desc = "Clear All Buffers" })
 
-vim.keymap.set("n", "]d", function()
-	vim.diagnostic.goto_next({ popup_opts = { border = "rounded", focusable = false } })
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
-vim.keymap.set("n", "[d", function()
-	vim.diagnostic.goto_prev({ popup_opts = { border = "rounded", focusable = false } })
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
-vim.keymap.set("n", "]e", function()
-	vim.diagnostic.goto_next({
-		severity = vim.diagnostic.severity.ERROR,
-		popup_opts = { border = "rounded", focusable = false },
-	})
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
-vim.keymap.set("n", "[e", function()
-	vim.diagnostic.goto_prev({
-		severity = vim.diagnostic.severity.ERROR,
-		popup_opts = { border = "rounded", focusable = false },
-	})
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
-vim.keymap.set("n", "]w", function()
-	vim.diagnostic.goto_next({
-		severity = vim.diagnostic.severity.WARN,
-		popup_opts = { border = "rounded", focusable = false },
-	})
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
-vim.keymap.set("n", "[w", function()
-	vim.diagnostic.goto_prev({
-		severity = vim.diagnostic.severity.WARN,
-		popup_opts = { border = "rounded", focusable = false },
-	})
-	vim.api.nvim_feedkeys("zz", "n", true)
-end)
-
 vim.keymap.set("n", "<leader>df", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
