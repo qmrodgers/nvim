@@ -44,3 +44,5 @@ vim.api.nvim_create_user_command("FormatPythonJson", function()
 	vim.cmd("%s/False/false/gi")
 	vim.cmd("%s/None/null/gi")
 end, {})
+
+vim.opt.shortmess:append("Ws")
