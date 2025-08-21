@@ -12,13 +12,6 @@ return {
 				["<M-h>"] = "actions.select_split",
 				["<C-S-r>"] = "actions.refresh",
 				["<C-l>"] = false,
-				["~"] = {
-					callback = function()
-						require("oil.actions").cd.callback()
-						vim.g.tree_initial_cwd = vim.fn.getcwd()
-						require("nvim-tree.api").tree.change_root(vim.g.tree_initial_cwd)
-					end,
-				},
 			},
 			buf_options = {
 				buflisted = false,
