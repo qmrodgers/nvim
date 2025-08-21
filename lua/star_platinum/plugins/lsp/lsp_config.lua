@@ -62,9 +62,6 @@ return {
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
-			opts.desc = "Go to Declaration"
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-
 			opts.desc = "See Code Actions"
 			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
