@@ -5,12 +5,10 @@ return {
 		"BufNewFile",
 	},
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local keymap = vim.keymap
 		local opts = { noremap = true, silent = true }
     vim.lsp.config("basedpyright", {
@@ -34,12 +32,30 @@ return {
             globals = { "vim" },
           },
           workspace = {
+            checkThirdParty = false,
             library = {
               [vim.fn.expand("$VIMRUNTIME/lua")] = true,
               [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
+            }
           },
-        }
+          codeLens = {
+            enable = true,
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+          doc = {
+            privateName = { "^_" },
+          },
+          hint = {
+            enable = true,
+            setType = false,
+            paramType = true,
+            paramName = "Disable",
+            semicolon = "Disable",
+            arrayIndex = "Disable",
+          },
+        },
       }
     })
     vim.lsp.enable("lua_ls")

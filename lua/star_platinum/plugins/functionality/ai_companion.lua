@@ -113,7 +113,7 @@ local config = {
         --   provider = "snacks.nvim",
         -- },
 				chat = {
-					show_settings = true,
+					show_settings = false,
 					render_headers = false,
 				},
 			},

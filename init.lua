@@ -4,3 +4,5 @@ vim.g.mapleader = " "
 
 require("star_platinum.core")
 require("star_platinum.lazy")
+
+vim.cmd("colorscheme catppuccin-mocha")

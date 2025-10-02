@@ -104,9 +104,9 @@ return {
                 text = function(ctx)
                   local icon = ctx.kind_icon
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                    local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
-                    if dev_icon then
-                      icon = dev_icon
+                    local mini_icon = MiniIcons.get('default', ctx.label)
+                    if mini_icon then
+                      icon = mini_icon
                     end
                   else
                     local lsp_icon = require("lspkind").symbolic(ctx.kind, {
@@ -124,9 +124,10 @@ return {
                   local hl = "BlinkCmpKind" .. ctx.kind
                     or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                    local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
-                    if dev_icon then
-                      hl = dev_hl
+                    local mini_icon, mini_hl = MiniIcons.get('default', ctx.label)
+                    
+                    if mini_hl then
+                      hl = mini_hl
                     end
                   end
                   return hl

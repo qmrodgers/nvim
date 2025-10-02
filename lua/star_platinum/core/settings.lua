@@ -21,7 +21,7 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.updatetime = 300
 vim.o.signcolumn = "yes"
 vim.o.number = true
@@ -30,6 +30,17 @@ vim.opt.showmode = false
 vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
 vim.o.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
 vim.opt.termguicolors = true
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
+vim.opt.foldtext = ""
 vim.opt.isfname:append("@-@")
 -- if vim.fn.has("win32") == 1 then
 -- 	vim.go.shell = "bash"
@@ -44,5 +55,7 @@ vim.api.nvim_create_user_command("FormatPythonJson", function()
 	vim.cmd("%s/False/false/gi")
 	vim.cmd("%s/None/null/gi")
 end, {})
+
+vim.g.markdown_recommended_style = 0
 
 vim.opt.shortmess:append("Ws")

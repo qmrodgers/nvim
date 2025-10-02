@@ -1,8 +1,5 @@
 return {
 	"sindrets/diffview.nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
 	config = function()
 		-- Lua
 		local actions = require("diffview.actions")
@@ -639,5 +636,5 @@ return {
     }
 	end,
 
-	vim.keymap.set("n", "<leader>gh", ":DiffviewFileHistory ", { desc = "Open Diffview File History" }),
+	vim.keymap.set("n", "<leader>gH", ":DiffviewFileHistory ", { desc = "Open Diffview File History" }),
 }

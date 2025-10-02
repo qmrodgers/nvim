@@ -1,115 +1,52 @@
 return {
-	"folke/noice.nvim",
-	event = "VeryLazy",
-	opts = {
-		lsp = {
-			override = {
-				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-				["vim.lsp.util.stylize_markdown"] = true,
-				["cmp.entry.get_documentation"] = true,
-			},
-		},
-		routes = {
-			{
-				filter = {
-					event = "msg_show",
-
-					any = {
-						{ find = "%d+L, %d+B" },
-						{ find = "; after #%d+" },
-						{ find = "; before #%d+" },
-						{ find = "line less" },
-						{ find = "fewer lines" },
-						{ find = "more line" },
-						{ find = "more lines" },
-					},
-				},
-			},
-		},
-		-- messages = {
-		-- 	enabled = false,
-		-- },
-		-- popupmenu = {
-		-- 	enabled = false,
-		-- },
-		-- notify = {
-		-- 	enabled = false,
-		-- },
-		presets = {
-			long_message_to_split = true, -- long messages will be sent to a split
-		},
-	},
-	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
-		"nvim-notify",
-		"rcarriga/nvim-notify",
-	},
-	keys = {
-		{
-			"<S-Enter>",
-			function()
-				require("noice").redirect(vim.fn.getcmdline())
-			end,
-			mode = "c",
-			desc = "Redirect Command Line",
-		},
-		{
-			"<leader>nt",
-			":Noice telescope",
-			desc = "Telescope Noice Messages",
-		},
-		{
-			"<leader>nl",
-			function()
-				require("noice").cmd("last")
-			end,
-			desc = "Replay Last Message",
-		},
-		{
-			"<leader>nh",
-			function()
-				require("noice").cmd("history")
-			end,
-			desc = "Noice History",
-		},
-		{
-			"<leader>na",
-			function()
-				require("noice").cmd("all")
-			end,
-			desc = "Noice All",
-		},
-		{
-			"<leader>nD",
-			function()
-				require("noice").cmd("dismiss")
-			end,
-			desc = "Noice Dismiss",
-		},
-		{
-			"<c-f>",
-			function()
-				if not require("noice.lsp").scroll(4) then
-					return "<c-f>"
-				end
-			end,
-			silent = true,
-			expr = true,
-			desc = "Scroll forward",
-			mode = { "i", "n", "s" },
-		},
-		{
-			"<c-b>",
-			function()
-				if not require("noice.lsp").scroll(-4) then
-					return "<c-b>"
-				end
-			end,
-			silent = true,
-			expr = true,
-			desc = "Scroll backward",
-			mode = { "i", "n", "s" },
-		},
-	},
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    lsp = {
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
+    },
+    routes = {
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        view = "mini",
+      },
+    },
+    presets = {
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
+    },
+  },
+  -- stylua: ignore
+  keys = {
+    { "<leader>sn", "", desc = "+noice"},
+    { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+    { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+    { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
+    { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+    { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+    { "<leader>snt", function() require("noice").cmd("pick") end, desc = "Noice Picker (Telescope/FzfLua)" },
+    { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
+    { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+  },
+  config = function(_, opts)
+    -- HACK: noice shows messages from before it was enabled,
+    -- but this is not ideal when Lazy is installing plugins,
+    -- so clear the messages in this case.
+    if vim.o.filetype == "lazy" then
+      vim.cmd([[messages clear]])
+    end
+    require("noice").setup(opts)
+  end,
 }

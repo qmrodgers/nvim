@@ -26,7 +26,6 @@ return {
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
     { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
     { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-    { "<leader>gh", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
     -- -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
@@ -72,7 +71,11 @@ return {
       enabled = true,
       replace_netrw = true,
     },
-    -- indent = { enabled = true },
+    indent = {
+      indent = {
+        enabled = true,
+      },
+    },
     -- input = { enabled = true },
     picker = {
       enabled = true,
