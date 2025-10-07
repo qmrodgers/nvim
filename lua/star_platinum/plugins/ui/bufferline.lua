@@ -1,3 +1,5 @@
+vim.api.nvim_set_hl(0, "BufferLineDevIconOil", { fg = "#ff8800" })
+vim.api.nvim_set_hl(0, "BufferLineDevIconGit", { fg = "#f1502f" })
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
@@ -6,8 +8,8 @@ return {
     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
     { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
     { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
-    { "<C-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-    { "<C-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+    { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+    { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
     { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
     { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
     { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
@@ -15,6 +17,28 @@ return {
   },
   opts = {
     options = {
+      -- Custom icon for oil.nvim buffers
+      get_element_icon = function(element)
+        if element.filetype == "oil" then
+          return "󰁴", "BufferLineDevIconOil" -- icon, highlight group
+        elseif element.filetype == "fugitive" then
+          return "", "BufferLineDevIconGit" -- icon, highlight group
+        end
+        -- fallback to default icon
+        local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = true })
+        return icon, hl
+      end,
+      -- Custom title for oil.nvim buffers
+      name_formatter = function(buf)
+        local filetype = vim.api.nvim_buf_get_option(buf.bufnr, 'filetype')
+        if filetype == "oil" then
+          return "oil"
+        elseif filetype == "fugitive" then
+          return "git"
+        end
+        -- fallback to default name
+        return nil
+      end,
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore

@@ -14,7 +14,7 @@ return {
 				["<C-l>"] = false,
 			},
 			buf_options = {
-				buflisted = false,
+				buflisted = true
 			},
 			win_options = {
 				wrap = false,
