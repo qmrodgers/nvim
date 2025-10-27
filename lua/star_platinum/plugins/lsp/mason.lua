@@ -14,7 +14,6 @@ if custom_github_url then
   mason_config.github = {
     download_url_template = custom_github_url
   }
-  print(vim.inspect(mason_config))
 end
 
 return {
