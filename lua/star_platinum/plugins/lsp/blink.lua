@@ -40,13 +40,13 @@ return {
       {
         "Dynge/gitmoji.nvim",
       },
-      {
-        "kawre/neotab.nvim",
-        event = "InsertEnter",
-        opts = {
-          tabkey = "<Tab>",
-        },
-      },
+      -- {
+      --   "kawre/neotab.nvim",
+      --   event = "InsertEnter",
+      --   opts = {
+      --     tabkey = "<Tab>",
+      --   },
+      -- },
     },
     version = "1.*",
 
@@ -60,8 +60,8 @@ return {
         preset = 'default',
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
-        ["<C-k>"] = { "select_prev", "fallback" },
-        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev",  "snippet_backward", "fallback" },
+        ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
         ["<Tab>"] = { function(cmp)
           if cmp.snippet_active() then
             return cmp.accept()
@@ -104,10 +104,11 @@ return {
                 text = function(ctx)
                   local icon = ctx.kind_icon
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                    local mini_icon = MiniIcons.get('default', ctx.label)
-                    if mini_icon then
-                      icon = mini_icon
-                    end
+                    -- DISABLED due to bug
+                    -- local mini_icon = MiniIcons.get('default', ctx.label)
+                    -- if mini_icon then
+                    --   icon = mini_icon
+                    -- end
                   else
                     local lsp_icon = require("lspkind").symbolic(ctx.kind, {
                       mode = "symbol"
@@ -116,7 +117,6 @@ return {
                       icon = lsp_icon
                     end
                   end
-
                   return icon .. ctx.icon_gap
                 end,
 
@@ -124,11 +124,12 @@ return {
                   local hl = "BlinkCmpKind" .. ctx.kind
                     or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                    local mini_icon, mini_hl = MiniIcons.get('default', ctx.label)
-                    
-                    if mini_hl then
-                      hl = mini_hl
-                    end
+                    -- DISABLED due to bug
+                    -- local mini_icon, mini_hl = MiniIcons.get('default', ctx.label)
+                    -- 
+                    -- if mini_hl then
+                    --   hl = mini_hl
+                    -- end
                   end
                   return hl
                 end

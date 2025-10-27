@@ -1,36 +1,15 @@
-vim.o.clipboard = vim.o.clipboard .. "unnamedplus"
-vim.opt.mouse = "a"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.updatetime = 50
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.confirm = true
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.breakindent = true
-vim.opt.scrolloff = 8
-vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
-vim.opt.wrap = false
-vim.opt.sidescroll = 1
-vim.opt.backspace = "indent,eol,start"
-vim.opt.swapfile = false
+vim.g.markdown_recommended_style = 0
+
+-- vim.opt.backspace = "indent,eol,start"
+vim.opt.autowrite = true
 vim.opt.backup = false
-vim.opt.undofile = true
+vim.opt.breakindent = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
+vim.opt.conceallevel = 2
+vim.opt.confirm = true
 vim.opt.cursorline = true
-vim.opt.updatetime = 300
-vim.o.signcolumn = "yes"
-vim.o.number = true
-vim.o.relativenumber = true
-vim.opt.showmode = false
-vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
-vim.o.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
-vim.opt.termguicolors = true
+vim.opt.expandtab = true
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -42,21 +21,48 @@ vim.opt.fillchars = {
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
 vim.opt.foldtext = ""
+vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v:blinkwait700-blinkoff400-blinkon250"
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.inccommand = "nosplit"
 vim.opt.isfname:append("@-@")
--- if vim.fn.has("win32") == 1 then
--- 	vim.go.shell = "bash"
--- 	vim.go.shellcmdflag = "-c"
--- 	vim.go.shellxquote = ""
--- else
--- 	vim.g.shell = "zsh"
--- end
+vim.opt.iskeyword:append("_")
+vim.opt.jumpoptions = "view"
+vim.opt.laststatus = 3
+vim.opt.list = true
+vim.opt.mouse = "a"
+vim.opt.number = true
+vim.opt.pumblend = 10
+vim.opt.pumheight = 10
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 4
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.showmode = false
+vim.opt.sidescroll = 1
+vim.opt.signcolumn = "yes"
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.smoothscroll = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
+vim.opt.swapfile = false
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 300
+vim.opt.virtualedit = "block"
+vim.opt.wildmode = "longest:full,full"
+vim.opt.winminwidth = 5
+vim.opt.wrap = false
+
 vim.api.nvim_create_user_command("FormatPythonJson", function()
 	vim.cmd("%s/'/\"/g")
 	vim.cmd("%s/True/true/gi")
 	vim.cmd("%s/False/false/gi")
 	vim.cmd("%s/None/null/gi")
 end, {})
-
-vim.g.markdown_recommended_style = 0
-
-vim.opt.shortmess:append("Ws")

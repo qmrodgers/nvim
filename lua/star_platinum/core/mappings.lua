@@ -115,8 +115,10 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
--- jj as an alternative to escape insert mode
+-- jj, jk, kj as an alternative to escape insert mode
 map("i", "jj", "<Esc>", { noremap = true })
+map("i", "jk", "<Esc>", { noremap = true })
+map("i", "kj", "<Esc>", { noremap = true })
 
 -- map("n", "<leader>df", function()
 -- 	vim.diagnostic.open_float({
