@@ -27,8 +27,22 @@ require("lazy").setup({
 	{
 		import = "star_platinum.plugins.ui",
 	},
+	{
+		import = "star_platinum.plugins.editing",
+	},
+	{
+		import = "star_platinum.plugins.navigation",
+	},
+	{
+		import = "star_platinum.plugins.testing",
+	},
+	{
+		import = "star_platinum.plugins.tools",
+	},
 }, {
-	install = {},
+	install = {
+    -- colorscheme = "catppuccin-mocha"
+  },
 	checker = {
 		enabled = true,
 		notify = false,
@@ -36,4 +50,7 @@ require("lazy").setup({
 	change_detection = {
 		notify = false,
 	},
+  rocks = {
+    enabled = false
+  }
 })

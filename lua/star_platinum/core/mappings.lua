@@ -139,6 +139,6 @@ map("n", "gV", "'[V']", { desc = "Select latest pasted content" })
 
 -- operations
 map("n", "x", "_x")
-map("n", "<leader><leader>x", "<cmd>source %<cr>", { desc = "Source current file" })
+map("n", "<leader>X", "<cmd>source %<cr>", { desc = "Source current file" })
 map("n", "<leader>x", ":.lua<CR>")
 map("v", "<leader>x", ":lua<CR>")

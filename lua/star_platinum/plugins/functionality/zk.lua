@@ -6,7 +6,9 @@ return {
     })
     vim.keymap.set("n", "zkt", "<cmd>ZkTags<CR>", { desc = "Zk Tags" })
     vim.keymap.set("n", "zkn", "<cmd>ZkNotes<CR>", { desc = "Zk Notes" })
-    vim.keymap.set("n", "zkl", "<cmd>ZkInsertLink<CR>", { desc = "Zk Insert Link" })
+    vim.keymap.set("n", "zki", "<cmd>ZkInsertLink<CR>", { desc = "Zk Insert Link" })
+    vim.keymap.set("n", "zkb", "<cmd>ZkBacklinks<CR>", { desc = "Zk Backlinks" })
+    vim.keymap.set("n", "zkl", "<cmd>ZkLinks<CR>", { desc = "Zk Links" })
     vim.keymap.set("n", "zkN", ":ZkNewNote ", { desc = "Zk New" })
 
     -- vim.api.nvim_create_user_command(

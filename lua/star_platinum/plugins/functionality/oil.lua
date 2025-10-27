@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("oil").setup({
 			-- columns = { "size", "birthtime", "mtime", "icon" },
-      default_file_explorer = false,
+      default_file_explorer = true,
       delete_to_trash = true,
 			columns = {"icon"},
 			keymaps = {

@@ -11,7 +11,7 @@ return {
     { "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     -- { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<leader>e", function() Snacks.explorer({ hidden = true, ignored = true }) end, desc = "File Explorer" },
+    -- { "<leader>e", function() Snacks.explorer({ hidden = true, ignored = true }) end, desc = "File Explorer" },
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config"), hidden = true, ignored = true, jump = { reuse_win = true } }) end, desc = "Find Config File" },
     { "<leader>fC", function() Snacks.picker.lazy() end, desc = "Find Plugin Spec" },
@@ -68,7 +68,7 @@ return {
     -- bigfile = { enabled = true },
     -- dashboard = { enabled = true },
     explorer = {
-      enabled = true,
+      enabled = false,
       replace_netrw = true,
     },
     indent = {
@@ -79,7 +79,7 @@ return {
     -- input = { enabled = true },
     picker = {
       enabled = true,
-      focus = "input",
+      focus = "input", -- "input" | "list" | "preview"
       jump = {
         reuse_win = true,
       },

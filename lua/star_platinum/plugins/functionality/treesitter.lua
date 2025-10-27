@@ -41,7 +41,12 @@ return {
         "gitignore",
         "regex",
       },
-    }
+    },
+    config = function()
+      if os.getenv("NVIM_TS_PREFER_GIT") == "true" then
+        require("nvim-treesitter.install").prefer_git = true
+      end
+    end
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",

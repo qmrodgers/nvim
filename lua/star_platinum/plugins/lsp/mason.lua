@@ -1,3 +1,22 @@
+local mason_config = {
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
+    },
+  },
+}
+
+local custom_github_url = os.getenv("NVIM_MASON_GITHUB_URL")
+
+if custom_github_url then
+  mason_config.github = {
+    download_url_template = custom_github_url
+  }
+  print(vim.inspect(mason_config))
+end
+
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
@@ -9,15 +28,7 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-		})
+		mason.setup(mason_config)
 
 		mason_lspconfig.setup({
 			ensure_installed = {
