@@ -149,6 +149,11 @@ if os.getenv("NVIM_SIMPLE_COPILOT") == "true" then
         },
         sources = {
           default = { "lsp", "path", "snippets", "buffer", "gitmoji", "ripgrep" },
+          per_filetype = {
+            sql = { "snippets", "dadbod" },
+            mysql = { "snippets", "dadbod" },
+            postgresql = { "snippets", "dadbod" },
+          },
           providers = {
             gitmoji = {
               name = "gitmoji",
@@ -157,6 +162,7 @@ if os.getenv("NVIM_SIMPLE_COPILOT") == "true" then
                 filetypes = { "gitcommit", "markdown" },
               }
             },
+            dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
             ripgrep = {
               module = "blink-ripgrep",
               name = "Ripgrep",
