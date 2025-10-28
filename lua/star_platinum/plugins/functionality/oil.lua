@@ -19,7 +19,7 @@ return {
 			win_options = {
 				wrap = false,
 				signcolumn = "no",
-				cursorcolumn = true,
+				cursorcolumn = false,
 				foldcolumn = "0",
 				spell = false,
 				list = false,

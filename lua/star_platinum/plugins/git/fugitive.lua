@@ -60,6 +60,7 @@ return {
 		map.set("n", "<leader>gc", ":Git commit ", { desc = "Git Commit" })
 		map.set("n", "<leader>gC", ":Git checkout ", { desc = "Git Checkout" })
 		map.set("n", "<leader>g-", ":Git checkout -<CR>", { desc = "Git Checkout Last" })
+    map.set("n", "<leader>gF", ":Git fetch | Git checkout ", { desc = "Git Fetch / Checkout" })
 		map.set("n", "<leader>gm", ":Git merge ", { desc = "Git Merge" })
 		map.set("n", "<leader>gA", ":Git add -A<CR>", { desc = "Git Add All" })
 		map.set("n", "<leader>ga", ":Git add ", { desc = "Git Add" })
