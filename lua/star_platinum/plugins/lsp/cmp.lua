@@ -1,133 +1,376 @@
-return {
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	dependencies = {
-	-- 		"hrsh7th/cmp-buffer",
-	-- 		"hrsh7th/cmp-nvim-lsp",
-	-- 		"hrsh7th/cmp-path",
-	-- 		"hrsh7th/cmp-nvim-lua",
-	-- 		"saadparwaiz1/cmp_luasnip",
-	-- 		"L3MON4D3/LuaSnip",
-	-- 		"rafamadriz/friendly-snippets",
-	-- 		"onsails/lspkind-nvim",
- --      "Dynge/gitmoji.nvim",
-	-- 		{
-	-- 			"kawre/neotab.nvim",
-	-- 			event = "InsertEnter",
-	-- 			opts = {
-	-- 				tabkey = "",
-	-- 			},
-	-- 		},
-	-- 		"hrsh7th/cmp-vsnip",
-	-- 	},
-	-- 	config = function()
-	-- 		local cmp = require("cmp")
-	-- 		local lspkind = require("lspkind")
-	-- 		local luasnip = require("luasnip")
-	-- 		local cmp_luasnip = require("cmp_luasnip")
-	-- 		local cmp_buffer = require("cmp_buffer")
-	-- 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-	-- 		local cmp_path = require("cmp_path")
-	-- 		local cmp_nvim_lua = require("cmp_nvim_lua")
-	-- 		local cmp_vsnip = require("cmp_vsnip")
-	-- 		local neotab = require("neotab")
-	--
- --      require("gitmoji").setup({
- --        filetypes = { "gitcommit", "markdown" },
- --        completion = {
- --          append_space = false,
- --          complete_as = "emoji",
- --        },
- --      })
-	--
-	-- 		local has_words_before = function()
-	-- 			unpack = unpack or table.unpack
-	-- 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	-- 			return col ~= 0
-	-- 				and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-	-- 		end
-	--
-	-- 		require("luasnip.loaders.from_vscode").lazy_load()
-	--
-	-- 		cmp.setup({
-	-- 			completion = {
-	-- 				completeopt = "menu,menuone,noinsert,noselect",
-	-- 			},
-	-- 			snippet = {
-	-- 				expand = function(args)
-	-- 					require("luasnip").lsp_expand(args.body)
-	-- 				end,
-	-- 			},
-	-- 			mapping = {
-	-- 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
-	-- 				["<C-f>"] = cmp.mapping.scroll_docs(4),
-	-- 				["<C-Space>"] = cmp.mapping.complete(),
-	-- 				["<C-e>"] = cmp.mapping.close(),
-	-- 				["jk"] = cmp.mapping.close(),
-	-- 				["<CR>"] = cmp.mapping.confirm({
-	-- 					behavior = cmp.ConfirmBehavior.Replace,
-	-- 					select = false,
-	-- 				}),
-	-- 				["<C-y>"] = cmp.mapping.confirm({
-	-- 					behavior = cmp.ConfirmBehavior.Replace,
-	-- 					select = true,
-	-- 				}),
-	-- 				["<C-p>"] = cmp.mapping.select_prev_item(),
-	-- 				["<C-n>"] = cmp.mapping.select_next_item(),
-	-- 				["<C-k>"] = cmp.mapping.select_prev_item(),
- --          ["<C-j>"] = cmp.mapping.select_next_item(),
-	-- 				["<C-S-j>"] = cmp.mapping.scroll_docs(4),
-	-- 				["<C-S-k>"] = cmp.mapping.scroll_docs(-4),
-	-- 				["<Tab>"] = cmp.mapping(function()
-	-- 				-- 	if cmp.visible() then
-	-- 				-- 		cmp.select_next_item()
-	-- 				-- 	elseif luasnip.jumpable(1) then
-	-- 				-- 		luasnip.expand_or_jump(1)
-	-- 				-- 	else
-	-- 						neotab.tabout()
-	-- 				-- 	end
-	-- 				end, {
-	-- 					"i",
-	-- 					"s",
-	-- 				}),
-	-- 				-- ["<S-Tab>"] = cmp.mapping(function(fallback)
-	-- 				-- 	if cmp.visible() then
-	-- 				-- 		cmp.select_prev_item()
-	-- 				-- 	elseif luasnip.jumpable(-1) then
-	-- 				-- 		luasnip.jump(-1)
-	-- 				-- 	else
-	-- 				-- 		fallback()
-	-- 				-- 	end
-	-- 				-- end, {
-	-- 				-- 	"i",
-	-- 				-- 	"s",
-	-- 				-- }),
-	-- 			},
-	-- 			sources = cmp.config.sources({
-	-- 				{ name = "calc" },
-	-- 				{ name = "buffer" },
-	-- 				{ name = "nvim_lsp" },
-	-- 				{ name = "path" },
-	-- 				{ name = "nvim_lua" },
-	-- 				{ name = "luasnip" },
-	-- 				{ name = "vsnip" },
-	-- 				{ name = "gitmoji" },
-	-- 			}),
-	-- 			formatting = {
-	-- 				format = lspkind.cmp_format({
-	-- 					with_text = true,
-	-- 					menu = {
-	-- 						buffer = "[Buffer]",
-	-- 						nvim_lsp = "[LSP]",
-	-- 						calc = "[Calc]",
-	-- 						path = "[Path]",
-	-- 						nvim_lua = "[Lua]",
-	-- 						luasnip = "[LuaSnip]",
-	-- 						vsnip = "[VSnip]",
-	-- 					},
-	-- 				}),
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
-}
+-- blink.cmp setup with optional copilot integration
+
+if os.getenv("NVIM_SIMPLE_COPILOT") == "true" then
+  -- If NVIM_SIMPLE_COPILOT is set to "true", don't include copilot blink integration
+  return {
+    {
+      "xzbdmw/colorful-menu.nvim",
+      config = function()
+        require("colorful-menu").setup()
+      end
+    },
+    {
+      "github/copilot.vim",
+      lazy = false,
+      config = function()
+        local keymap = vim.keymap
+        keymap.set(
+          "n",
+          "<leader>cp",
+          "<cmd>Copilot panel<CR>",
+          { noremap = true, silent = true, desc = "Open Copilot Panel" }
+        )
+        vim.g.copilot_no_tab_map = true
+        vim.api.nvim_set_keymap(
+          "i",
+          "<C-c>",
+          "copilot#Accept('<CR>')",
+          { silent = true, expr = true, desc = "Copilot Completion" }
+        )
+      end,
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      lazy = true,
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+          require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+        end,
+      }
+    },
+    {
+      'saghen/blink.cmp',
+      dependencies = {
+        "onsails/lspkind-nvim",
+        "L3MON4D3/LuaSnip",
+        "mikavilpas/blink-ripgrep.nvim",
+        {
+          "Dynge/gitmoji.nvim",
+        },
+        -- {
+        --   "kawre/neotab.nvim",
+        --   event = "InsertEnter",
+        --   opts = {
+        --     tabkey = "<Tab>",
+        --   },
+        -- },
+      },
+      version = "1.*",
+
+      --module 'blink.cmp'
+      --@type blink.cmp.Config
+      opts = {
+        snippets = {
+          preset = 'luasnip',
+        },
+        keymap = {
+          preset = 'default',
+          ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+          ["<C-e>"] = { "hide", "fallback" },
+          ["<C-k>"] = { "select_prev", "snippet_backward", "fallback" },
+          ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
+          ["<Tab>"] = { function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_next()
+            end
+          end,
+            "snippet_forward",
+            "fallback"
+          },
+          ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+          ["<Enter>"] = { "accept", "fallback" },
+          ["<C-y>"] = { "accept", "fallback" },
+          ["<C-d>"] = { "show_documentation", "hide_documentation" }
+        },
+        appearance = {
+          nerd_font_variant = "mono"
+        },
+        completion = {
+          accept = {
+            auto_brackets = {
+              enabled = true
+            }
+          },
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0
+          },
+          ghost_text = {
+            enabled = false
+          },
+          list = {
+            selection = { preselect = false, auto_insert = true }
+          },
+          menu = {
+            draw = {
+              columns = { { "kind_icon" }, { "label", gap = 1 } },
+              components = {
+                kind_icon = {
+                  text = function(ctx)
+                    local icon = ctx.kind_icon
+                    if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                      -- DISABLED due to bug
+                      -- local mini_icon = MiniIcons.get('default', ctx.label)
+                      -- if mini_icon then
+                      --   icon = mini_icon
+                      -- end
+                    else
+                      local lsp_icon = require("lspkind").symbolic(ctx.kind, {
+                        mode = "symbol"
+                      })
+                      if lsp_icon ~= "" then
+                        icon = lsp_icon
+                      end
+                    end
+                    return icon .. ctx.icon_gap
+                  end,
+
+                  highlight = function(ctx)
+                    local hl = "BlinkCmpKind" .. ctx.kind
+                        or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
+                    if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                      -- DISABLED due to bug
+                      -- local mini_icon, mini_hl = MiniIcons.get('default', ctx.label)
+                      --
+                      -- if mini_hl then
+                      --   hl = mini_hl
+                      -- end
+                    end
+                    return hl
+                  end
+                }
+              }
+            }
+          }
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer", "gitmoji", "ripgrep" },
+          providers = {
+            gitmoji = {
+              name = "gitmoji",
+              module = "gitmoji.blink",
+              opts = {
+                filetypes = { "gitcommit", "markdown" },
+              }
+            },
+            ripgrep = {
+              module = "blink-ripgrep",
+              name = "Ripgrep",
+              -- the options below are optional, some default values are shown
+              ---@module "blink-ripgrep"
+              ---@type blink-ripgrep.Options
+              opts = {},
+              -- (optional) customize how the results are displayed. Many options
+              -- are available - make sure your lua LSP is set up so you get
+              -- autocompletion help
+              transform_items = function(_, items)
+                for _, item in ipairs(items) do
+                  -- example: append a description to easily distinguish rg results
+                  item.labelDetails = {
+                    description = "(rg)",
+                  }
+                end
+                return items
+              end,
+            },
+          }
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" }
+      },
+      opts_extend = { "sources.default" }
+    }
+  }
+else
+  -- If NVIM_SIMPLE_COPILOT is not "true", defaults to using copilot blink integration
+  return {
+    {
+      "xzbdmw/colorful-menu.nvim",
+      config = function()
+        require("colorful-menu").setup()
+      end
+    },
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        filetypes = {
+          markdown = true,
+          help = true,
+        },
+
+      }
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      lazy = true,
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+          require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+        end,
+      }
+    },
+    {
+      'saghen/blink.cmp',
+      dependencies = {
+        "fang2hou/blink-copilot",
+        "onsails/lspkind-nvim",
+        "L3MON4D3/LuaSnip",
+        "mikavilpas/blink-ripgrep.nvim",
+        {
+          "Dynge/gitmoji.nvim",
+        },
+        -- {
+        --   "kawre/neotab.nvim",
+        --   event = "InsertEnter",
+        --   opts = {
+        --     tabkey = "<Tab>",
+        --   },
+        -- },
+      },
+      version = "1.*",
+
+      --module 'blink.cmp'
+      --@type blink.cmp.Config
+      opts = {
+        snippets = {
+          preset = 'luasnip',
+        },
+        keymap = {
+          preset = 'default',
+          ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+          ["<C-e>"] = { "hide", "fallback" },
+          ["<C-k>"] = { "select_prev", "snippet_backward", "fallback" },
+          ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
+          ["<Tab>"] = { function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_next()
+            end
+          end,
+            "snippet_forward",
+            "fallback"
+          },
+          ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+          ["<Enter>"] = { "accept", "fallback" },
+          ["<C-y>"] = { "accept", "fallback" },
+          ["<C-d>"] = { "show_documentation", "hide_documentation" }
+        },
+        appearance = {
+          nerd_font_variant = "mono"
+        },
+        completion = {
+          accept = {
+            auto_brackets = {
+              enabled = true
+            }
+          },
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0
+          },
+          ghost_text = {
+            enabled = false
+          },
+          list = {
+            selection = { preselect = false, auto_insert = true }
+          },
+          menu = {
+            draw = {
+              columns = { { "kind_icon" }, { "label", gap = 1 } },
+              components = {
+                kind_icon = {
+                  text = function(ctx)
+                    local icon = ctx.kind_icon
+                    if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                      -- DISABLED due to bug
+                      -- local mini_icon = MiniIcons.get('default', ctx.label)
+                      -- if mini_icon then
+                      --   icon = mini_icon
+                      -- end
+                    else
+                      local lsp_icon = require("lspkind").symbolic(ctx.kind, {
+                        mode = "symbol"
+                      })
+                      if lsp_icon ~= "" then
+                        icon = lsp_icon
+                      end
+                    end
+                    return icon .. ctx.icon_gap
+                  end,
+
+                  highlight = function(ctx)
+                    local hl = "BlinkCmpKind" .. ctx.kind
+                        or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
+                    if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                      -- DISABLED due to bug
+                      -- local mini_icon, mini_hl = MiniIcons.get('default', ctx.label)
+                      --
+                      -- if mini_hl then
+                      --   hl = mini_hl
+                      -- end
+                    end
+                    return hl
+                  end
+                }
+              }
+            }
+          }
+        },
+        sources = {
+          default = { "copilot", "lsp", "path", "snippets", "buffer", "gitmoji", "ripgrep" },
+          providers = {
+            gitmoji = {
+              name = "gitmoji",
+              module = "gitmoji.blink",
+              opts = {
+                filetypes = { "gitcommit", "markdown" },
+              }
+            },
+            copilot = {
+              name = "copilot",
+              module = "blink-copilot",
+              score_offset = 100,
+              async = true,
+              opts = {
+                kind = "Copilot",
+                kind_name = "CP"
+              }
+            },
+            ripgrep = {
+              module = "blink-ripgrep",
+              name = "Ripgrep",
+              -- the options below are optional, some default values are shown
+              ---@module "blink-ripgrep"
+              ---@type blink-ripgrep.Options
+              opts = {},
+              -- (optional) customize how the results are displayed. Many options
+              -- are available - make sure your lua LSP is set up so you get
+              -- autocompletion help
+              transform_items = function(_, items)
+                for _, item in ipairs(items) do
+                  -- example: append a description to easily distinguish rg results
+                  item.labelDetails = {
+                    description = "(rg)",
+                  }
+                end
+                return items
+              end,
+            },
+          }
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" }
+      },
+      opts_extend = { "sources.default" }
+    }
+  }
+end
