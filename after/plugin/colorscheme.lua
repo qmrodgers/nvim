@@ -1,4 +1,4 @@
-local function set_custom_diff_colors()
+local function set_custom_colors()
 
   local colorscheme = vim.g.colors_name
 
@@ -14,12 +14,16 @@ local function set_custom_diff_colors()
     -- vim.api.nvim_set_hl(0, "DiffChange", { fg = fg, bg = "#f9e2af", bold = true })
     -- vim.api.nvim_set_hl(0, "DiffDelete", { fg = fg, bg = "#f38ba8", bold = true })
     -- vim.api.nvim_set_hl(0, "DiffText",   { fg = fg, bg = "#89b4fa" , bold = true })
+    -- vim.api.nvim_set_hl(0, "Folded", {bg = "#89B4FB", fg = "#FFFFFF"})
+    -- vim.api.nvim_set_hl(0, "FoldColumn", {fg = "#FFFFFF"})
   end
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
-  callback = set_custom_diff_colors,
+  callback = set_custom_colors,
 })
 
-set_custom_diff_colors()
+-- set_custom_colors()
+
+

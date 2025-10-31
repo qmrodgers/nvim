@@ -47,7 +47,8 @@ vim.opt.smartindent = true
 vim.opt.smoothscroll = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.statuscolumn = '%s %#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
+vim.opt.statuscolumn = '%C %s%#LineNr#%{&nu?v:lnum:""}' .. '%=%#RainbowDelimiterCyan#%{&rnu?" ".v:relnum:""} '
+-- vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true

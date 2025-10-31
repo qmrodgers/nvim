@@ -77,6 +77,7 @@ return {
 			},
 			sections = {
 				lualine_a = { getVimMode, "mode" },
+				lualine_b = { "branch", "diff", getCWDName, "filename" },
 				lualine_c = { getCurrentSearchTerm, getSystemClipboard },
 				lualine_x = { getPopularPasteRegisters },
 			},
