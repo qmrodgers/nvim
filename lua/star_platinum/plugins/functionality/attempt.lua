@@ -4,7 +4,7 @@ return {
     local attempt = require("attempt")
 		attempt.setup({
       list_buffers = true,
-      ext_options = { 'lua', 'js', 'json', 'py', 'cpp', 'c', '' },  -- Options to choose from
+      ext_options = { 'lua', 'js', 'json', 'py', 'cpp', 'c', 'md' },  -- Options to choose from
       initial_content = {
         py = function()
           return [[

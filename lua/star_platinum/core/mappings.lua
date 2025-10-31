@@ -1,5 +1,8 @@
 local map = vim.keymap.set
 
+-- rm highlight on <ESC>
+map("n", "<ESC>", "<cmd>noh<cr><ESC>", { desc = "Escape and clear hlsearch" })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
