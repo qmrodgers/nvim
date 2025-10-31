@@ -1,4 +1,6 @@
 local function getCWDName()
+  -- returns root directory name and current file
+  -- not needed with a breadcrumb, tab plugin
 	local dir = vim.fn.getcwd()
 	local dirName = string.match(dir, ".*/(.*)$")
 	if dirName == nil then
@@ -24,12 +26,44 @@ local getVimMode = function()
 	end
 end
 
-local getDiffStatus = function()
-	if vim.g.diffview_open then
-		return "DIFF"
-	else
-		return ""
-	end
+local getCurrentSearchTerm = function()
+  local search = vim.fn.getreg('/')
+  if string.len(search) > 20 then
+    return " " .. string.sub(search, 1, 20) .. "..."
+  end
+    return " " .. search
+end
+
+local getSystemClipboard = function()
+  local clip = vim.fn.getreg('+')
+  if string.len(clip) > 20 then
+    return " " .. string.sub(clip, 1, 20) .. "..."
+  end
+    return " " .. clip
+end
+
+
+local getPopularPasteRegisters = function()
+  -- update table below with registers you want to display contents of
+  local output = ""
+  for _, register in pairs({"a", "b", "c", "d", "e", "f"}) do
+    local register_contents = vim.fn.getreg(register)
+    if string.len(register_contents) > 0 then
+      local output_slice = ""
+      if string.len(output) > 0 then
+        output_slice = output_slice .. " | "
+      end
+      output_slice = output_slice .. "" .. register .. ": "
+      if string.len(register_contents) > 20 then
+        output_slice = output_slice .. string.sub(register_contents, 1, 20) .. "..."
+      else
+        output_slice = output_slice .. register_contents
+      end
+        output = output .. output_slice
+    end
+  end
+
+  return "Paste Registers: " .. output
 end
 
 return {
@@ -43,9 +77,9 @@ return {
 			},
 			sections = {
 				lualine_a = { getVimMode, "mode" },
-				lualine_c = { getCWDName, "filename"},
-				lualine_x = { getDiffStatus },
+				lualine_c = { getCurrentSearchTerm, getSystemClipboard },
+				lualine_x = { getPopularPasteRegisters },
 			},
-		})
+	})
 	end,
 }
